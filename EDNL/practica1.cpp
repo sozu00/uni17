@@ -11,6 +11,8 @@ int numnodos(Abin<T>& a){
   return NodoMasnumhijos(a, a.raizB());
 }
 
+
+
 template <typename T>
 int NodoMasnumhijos(Abin<T>& A, typename Abin<T>::nodo n){
   return (n == Abin::NODO_NULO) ? 0 : 1 + NodoMasnumhijos(A,A.hijoIzqdoB(n)) + NodoMasnumhijos(A, A.hijoDrchoB(n));
