@@ -1,4 +1,8 @@
 import java.util.regex.*;
+import java.io.*;
+import java.util.*;
+import java.text.Normalizer;
+
 public class practica1{
   public static boolean uno(String cadena){
     Pattern pat = Pattern.compile("abc.*");
@@ -84,45 +88,99 @@ public class practica1{
     return mat.matches();
   }
 
-  public static boolean catorce(String cadena){
-    Pattern pat = Pattern.compile("");
-    Matcher mat = pat.matcher(cadena);
+  public static boolean catorce(String cadena) throws Exception{
+    String t = Leer.readFile(cadena);
+    Pattern pat = Pattern.compile(".*[\\x3C]img.*[\\x3E].*");
+    Matcher mat = pat.matcher(t);
     return mat.matches();
   }
 
   public static boolean quince(String cadena){
-    Pattern pat = Pattern.compile("");
-    Matcher mat = pat.matcher(cadena);
+    String s = "<a>uno</a><b>dos</b><c>tres</c><d>cuatro</d><e>cinco</e>";
+    Pattern pat = Pattern.compile("[\\x3C][^[\\x3E]]*[\\x3E]([^[\\x3C]]*)[\\x3C][\\x2F][^[\\x3E]]*[\\x3E]");
+    //Hay una incongruencia en cada </ porque es y no es <.
+    Pattern pat2 = Pattern.compile("[\\x3C].*[\\x3E](.*)[\\x3C].*[\\x3E]");
+    Pattern pat3 = Pattern.compile("[\\x3C].*?[\\x3E](.*?)[\\x3C].*?[\\x3E]");
+    String [] num = pat3.split(s);
+    for(String x : num)  System.out.print(x);
+    Matcher mat = pat.matcher(s);
     return mat.matches();
   }
 
-  public static boolean dieciseis(String cadena){
-    Pattern pat = Pattern.compile("");
+  public static String dieciseis(String cadena) throws Exception{
+    String t = Leer.readFile(cadena);
+    Pattern pat = Pattern.compile("\\p{Punct}");
     Matcher mat = pat.matcher(cadena);
-    return mat.matches();
-  }
-  public static boolean diecisiete(String cadena){
-    Pattern pat = Pattern.compile("");
-    Matcher mat = pat.matcher(cadena);
-    return mat.matches();
-  }
-
-  public static boolean dieciocho(String cadena){
-    Pattern pat = Pattern.compile("");
-    Matcher mat = pat.matcher(cadena);
-    return mat.matches();
+    String [] num = pat.split(t);
+    String resultado = "";
+    for(String x : num)  resultado = resultado.concat(x);
+    return resultado;
   }
 
-  public static boolean diecinueve(String cadena){
-    Pattern pat = Pattern.compile("");
-    Matcher mat = pat.matcher(cadena);
-    return mat.matches();
+  public static String diecisiete(String cadena) throws Exception{
+    String t = dieciseis(cadena);
+    //Sustituyo el codigo ascii de mierda que me imprime por la letra que corresponde
+    Pattern patA = Pattern.compile("[\\u00A1]");
+    Matcher matA = patA.matcher(t);
+    String resultado = matA.replaceAll("a");
+
+    Pattern patE = Pattern.compile("[\\u00A9]");
+    Matcher matE = patE.matcher(resultado);
+    resultado = matE.replaceAll("e");
+
+    Pattern patI = Pattern.compile("[\\u00aD]");
+    Matcher matI = patI.matcher(resultado);
+    resultado = matI.replaceAll("i");
+
+    Pattern patO = Pattern.compile("[\\u00B3]");
+    Matcher matO = patO.matcher(resultado);
+    resultado = matO.replaceAll("o");
+
+    Pattern patU = Pattern.compile("[\\u00BA]");
+    Matcher matU = patU.matcher(resultado);
+    resultado = matU.replaceAll("u");
+
+    Pattern patN = Pattern.compile("[\\u00B1]");
+    Matcher matN = patN.matcher(resultado);
+    resultado = matN.replaceAll("n");
+
+
+    //Borro toda la basura sobrante (tildes raras)
+    Pattern patG = Pattern.compile("[^\\p{ASCII}]");
+    Matcher matG = patG.matcher(resultado);
+    resultado = matG.replaceAll("");
+
+    return resultado;
   }
 
-  public static boolean veinte(String cadena){
-    Pattern pat = Pattern.compile("");
-    Matcher mat = pat.matcher(cadena);
-    return mat.matches();
+  public static String dieciocho(String cadena) throws Exception{
+    String t = diecisiete(cadena);
+    Pattern pat = Pattern.compile(" [0-9]+ ");
+    Matcher mat = pat.matcher(t);
+    String resultado = mat.replaceAll(" ");
+    return resultado;
+  }
+
+  public static String diecinueve(String cadena) throws Exception{
+    String t = dieciocho(cadena);
+    Pattern patA = Pattern.compile("[\\p{Alpha}]");
+    Matcher mat = patA.matcher(t);
+    StringBuffer resultado = new StringBuffer(); //El append sol funciona con stringbuffer
+
+    //Para TODAS LAS LETRAS
+    while(mat.find()){
+      mat.appendReplacement(resultado, mat.group().toUpperCase()); //Añade al buffer el texto en caps
+    }
+
+    return resultado.toString();
+  }
+
+  public static String veinte(String cadena) throws Exception{
+    String t = diecinueve(cadena);
+    Pattern patA = Pattern.compile("  ");
+    Matcher mat = patA.matcher(t);
+    String resultado = mat.replaceAll(" ");
+    return resultado;
   }
 
 }

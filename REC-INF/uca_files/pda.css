@@ -1,0 +1,260 @@
+@charset "UTF-8";
+
+/*-ANCHO 100 POR CIEN, ANULO HACK PARA QUE CREZCAN LAS COLUMNAS, ALTO MINIMO Y MARGIN-LEFT FIJO EN CAJAS CON IMG Y TEXTO-*/
+#navegacion2, #situacion, div#pactivo, #atajo, #recurso, .moduloizda, .modulodcha, .modulohome .izda, .modulohome .dcha, .izda, .dcha, .contenedor, .modulo4 .moduloizda, 
+.modulo4 .modulodcha, .subhome .item, .residencias .info, .directorio .moduloizda, .directorio .modulodcha, .universidades .moduloizda, 
+.universidades .modulodcha, .universidades .texto, .ucatv .moduloizda, .ucatv .modulodcha, .item2, 
+.listadoitem .info, .info ul, #a_noticiadestacada, #a_documento .zonainformacion, #a_documento .zonaimagen, 
+.grupos li, #a_not, #a_event, .categorias, .categorias li, .infoimg, .a_formdinamic, .fform, 
+#a_areadestacada, #a_formacion, .cajapestanas .izda, .cajapestanas .dcha{width:100% !important;float:left !important}
+
+.modulohome, .modulo1, .modulo2, .modulo3, .modulo4, .subhome, .bloquesubhome, .subhome .item, .destacados, .enlaces, .enlace, .banner, 
+.sumario, .descargas, .interes, .encuesta, .infoadicional, .moduloboletin, .directorio, .universidades, 
+.ucatv, .datoscontacto, .datoscontacto table, .cajapestanas, .cajapestanas .ficha_tipo2, #a_boletinesoficiales{overflow:visible}
+
+.decoracion, .listadoitem .itemimg{display:none}
+
+#recurso{min-height:10px !important;height:auto !important;height:10px}
+
+.modulohome, .moduloizda, .modulodcha, .decoracion, .contenedor, .modulohome .moduloizda, .modulohome .modulodcha{min-height:10px !important;height:auto !important;height:10px;background:transparent}
+
+.modulocentro{width:auto;float:none;padding:0 15px}
+
+.item2, .bloquesubhome .item, .residencias .info, .honoris .cajafondo, .listadoitem, .listadoitem .info, #a_documento .zonainformacion, 
+#a_documento .zonaimagen, .cajapestanas .ficha_tipo2 .izda, .cajapestanas .ficha_tipo2 .dcha{padding:0;margin:0;background:transparent}
+
+.conimg, .modulohome .izda, .universidades .texto{margin-left:0 !important}
+
+h2{font-size:1.6em}
+h3{font-size:1.4em}
+h4{font-size:1.2em}
+h5, h6{font-size:1em}
+
+table{font-size:1em}
+th, td{padding:5px;border-width:1px}
+
+/*-ESTRUCTURA-*/
+.mensaje, .hidden{display:none}
+.dimensioncuerpo{width:100%;margin:0}
+body, #envoltura{background:#ffffff}
+h1{float:none;padding-left:0}
+
+#auxiliar, #utilidades, #idiomas{width:auto;min-height:1px !important;height:auto !important;height:1px;border:0;float:none;margin:0;padding:0 10px}
+#auxiliar li, #utilidades li{padding-bottom:0} 
+#idiomas{padding-bottom:5px}
+#idiomas a{padding-left:0;background:transparent}
+
+#navegacion{margin-top:10px}
+#n1, #buscadorGeneralForm{width:auto;float:none;margin:0 !important;padding:5px 10px !important;text-align:left}
+#n1{padding-top:0 !important}
+#buscadorGeneralForm input{width:auto;float:none}
+#buscadorGeneralForm .buscar{color:#ffffff}
+#n1 li{padding:2px 0;display:block}
+
+#navegacion2{padding-bottom:5px}
+#n2 ul{padding:5px 15px}
+#situacion{border:0}
+* #pactivo{margin:0 !important;padding:5px 0 10px 15px  !important}
+div#pactivo {margin-left:0 !important}
+
+#seccion1, #seccion2, #seccion3, #seccion4{width:auto;float:none;padding:5px;min-height:1px !important;height:auto !important;height:1px;border-left:0}
+
+/*-PLANTILLAS-*/
+.modulohome .moduloizda, .modulohome .modulodcha{width:100% !important;float:none !important}
+.modulohome .cont, .bloquesubhome, .encuesta .moduloapli{width:auto;float:none}
+
+* .modulohome h2, #a_areadestacada h2, #a_formacion h2{min-height:1px !important;height:auto !important;height:1px;margin:0 10px 8px !important;padding:0 !important;background:#fff !important;font:bold 1.3em Arial !important;color:#01678f !important}
+* .modulohome h2 a{color:#01678f !important}
+
+.flash object dl{margin-bottom:10px}
+.flash object dd{padding-bottom:5px}
+
+.modulohome .izda{margin-right:0}
+.img_Sin_L, .img_Sin_R, .img_Con_L, .img_Con_R{clear:left}
+.honoris .cajafondo{width:100%;float:none;margin-bottom:10px}
+.listadoitem .info{margin:0}
+
+* .modulohome .encuesta h2{margin-bottom:-25px !important}
+.encuesta h2{min-height:1px !important;height:auto !important;height:1px;margin:0;padding:0;background:transparent;text-align:left;font:normal 1.1em Arial}
+.encuesta h2 strong{font-size:1em}
+.encuesta .moduloapli{width:auto;padding:0;background:transparent}
+.enlaces li{margin-top:0}
+.enlaces li a{font-size:1em}	
+
+.destacados .cont img, .subhome img{display:none}
+.subhome .bloquesubhome {border:0}
+.subhome .cajaitem p{margin:0}
+.destacados .item{margin:0;border:0}
+
+p.inforesultados, p.vacio{margin:0 !important;text-align:left !important}
+
+/*-COMUNES FORMULARIOS // LISTADOS // FICHAS-*/
+.divbotones input{padding:0;background:transparent !important;color:#000}
+*>/**/.divbotones input{padding:0}
+.fechas label, .divbotones div, .encuesta .fform .divbotones input{width:auto}
+.a_formdinamic #envioconfirmacion p{margin:0}
+.form_tipo2 .radios label {width:99.5%}
+.form_tipo2 .cuerpoform, .form_tipo2 .divbotones{width:auto;float:none;padding:10px}
+#errorvalidacion p{padding:0;background:transparent}
+#errorvalidacion ul{padding-left:0}
+.etiqueta, .etiquetarequerida, .checkboxes .descripcion, .radios .descripcion, .cuerpoform label{width:99.5%;display:block;float:none;padding:0 0 3px}
+.cuerpoform label{margin:0 0 5px}
+.obligatorio{padding-bottom:5px;margin-bottom:0;border:0}
+.textarea textarea{width:99%;height:50px}
+.inputfile input{width:auto}
+.td50, .td50r{width:99.5%}
+
+#a_mensaje #envioconfirmacion, #a_mensaje #envioerror{width:auto;min-height:10px !important;height:auto !important;height:10px;float:none;padding:0}
+#a_mensaje h3{padding:0;background:transparent}
+#a_mensaje p, #a_mensaje p.info{margin:0}
+
+.listado_tipo1 dt.conimg img{position:static;float:left;margin-right:10px}
+
+.ficha_tipo2 h3.nombre{margin-right:0}
+
+.pestanas{width:100% !important;margin:0;padding:0 0 15px}
+*>/**/.pestanas{float:none}
+.pestanas li,.pestanas li.primero{float:none;display:block;padding:0 0 2px;border:0;border-bottom:1px solid #cecdcf;font-size:1.1em;font-weight:bold}
+.pestanas li{padding:5px}
+.pestanas li a{text-align:left;color:#01678f}
+.pestanas li.tabs-selected{padding:5px;background:transparent;color:#d36810}
+
+.cajapestanas{width:auto;float:none;padding:0;border:0}
+.cajapestanas .ficha_tipo2 h3.nombre{margin-right:0}
+.cajapestanas #map{height:auto}
+
+/*-APLICACIONES-*/
+#a_mapaweb ul, #a_mapaweb li, #a_mapaweb li a, #a_mapaweb li li{width:auto;float:none}
+#a_mapaweb ul ul{margin:0}
+#a_mapaweb li{border:0;padding:0 15px}
+#a_mapaweb li a{font-size:1.4em}
+#a_mapaweb li li li li{padding-bottom:2px}
+
+#a_buscadorgeneralexterior.modulo4 .moduloizda{width:auto;min-height:10px !important;height:auto !important;height:10px}
+#listadoitems, #resultados{width:auto;clear:left;margin:0;padding:0 15px;border:0}
+#listadoitems dt{width:auto}
+.cajaimagen{padding:10px 2%;margin:0 0 10px}
+#a_buscadorgeneralexterior .cajaimagen{display:none}
+
+#a_areadestacada ul.pestanas{display:none}
+
+.encuesta .cuerpoform{padding-bottom:0}
+.encuesta form .divbotones div{background:transparent}
+.encuesta form .divbotones input{padding:0;background:transparent}
+*>/**/.encuesta form .divbotones input{padding:0}
+.encuesta .checkboxes, .encuesta .radios{margin-bottom:0}
+.encuesta .zonachecks, .encuesta .zonaradios{margin-top:0}
+
+.info li{padding:0 0 5px 10px;margin-bottom:5px}
+#a_noticiadestacada li img{width:auto;height:auto;float:none;margin-bottom:5px}
+.info .nombre a, .info li p.descripcion, .info li p, .info li.destacada .nombre a{font-size:1em}
+.calendario{font-size:1em}
+.leyenda{display:none}
+#a_calendario, #a_calendariodossier{width:90%;padding:0 5%;margin:0;border:0}
+
+#a_formacion{min-height:10px !important;height:auto !important;height:10px;padding-bottom:10px}
+#a_formacion img{display:none}
+#a_formacion ul{margin:0 10px}
+#a_formacion li{padding:1px 0;font-size:1em;background:transparent}
+#a_formacion li a{padding-left:0;background:transparent}
+
+.directorio .item{width:auto;clear:left;padding:0 15px 10px;margin-bottom:5px;border:0}
+.directorio .item img, #a_directorio .dcha img{display:none}
+
+.grupos{width:99.5%;margin:5px 0;padding:0;background:transparent}
+.grupos ul{width:auto;float:none;padding:0;border:0}
+.grupos li{width:auto;float:none;padding:5px;min-height:1px !important;height:auto !important;height:1px;background:transparent}
+.grupos li a{padding:0 0 0 15px}
+
+.ficha_tipo2 .datoscontacto{width:99.5%;padding:0;background:transparent}
+.cajapestanas .ficha_tipo2 .izda{border-right:0}
+.ficha_tipo2 h3.nombre{margin:0 0 5px;font-size:1.4em}
+.datoscontacto table{background:transparent;font-size:.9em}
+.datoscontacto table th, .datoscontacto table td{padding:4px}
+.datoscontacto td.linea{background:transparent}
+
+.responsables{min-height:10px !important;height:auto !important;height:10px}
+.responsables h4{font-size:1.2em}
+.cajaresponsables{margin-bottom:5px;padding:0 0 5px}
+.inforesponsable h5{font-size:1em}
+
+p.volver, p.pinfo{display:none}
+
+#a_titulaciones .listadoinicial ul, #a_titulaciones .listadoinicial li, #a_titulaciones .listadoinicial p{width:100%;float:left}
+#a_titulaciones .listadoinicial li{margin-bottom:20px}
+#a_titulaciones .listadoinicial li img{float:left;clear:left;margin-bottom:10px}
+
+#a_calendario, #a_calendariodossier{width:auto;float:none}
+.grupos li{background:transparent}
+.mapa{display:none}
+
+#a_dossierprensa .listado_tipo1 li img{float:left;clear:left}
+#a_dossierprensa .listado_tipo1 li .conimg{width:100%;float:left;margin:10px 0}
+
+#a_not img{margin-right:10px}
+
+.fechatit span.hoy, .fechatit span.mes, .fechatit span.dia{display:inline !important;float:none !important;margin:0 0 10px !important;font-size:1em !important}
+.fechatit{width:auto;float:none;margin:0;font-size:1.3em !important}
+.cajacalendario{width:auto;float:none;border-right:0}
+
+#a_galeriaimg{width:auto;float:none;padding:0 15px}
+.categorias{padding:0;background:transparent}
+.categorias li{float:none;margin:0;padding:0;background:transparent}
+.categorias li img{display:none}
+#a_galeriaimg .cajaform div{width:80%;float:left}
+#a_galeriaimg .divbotones{width:20px !important;float:right;margin-top:13px}
+.volver{width:100%}
+.paso3 .fotos{padding-bottom:0;background:transparent}
+.fotos{padding:0;border-top:0;position:static}
+.fotos ul{border-bottom:0}
+.fotos li{width:auto;float:none;padding:0}
+.fotos li .descripcionfoto{min-height:10px !important;height:auto !important;height:10px;padding:5px 0}
+
+.videos{width:auto;float:none;margin:0;padding:0 15px;border-top:0}
+.videos.primero{background:transparent}
+.videos .item, .videos .item.izda, .videos .item.dcha, .videos .item.centro{width:auto;float:none;padding:0 15px 10px;border:0}
+.videos .descripcion{margin-bottom:0}
+.videos .item h4{clear:none}
+#a_videos .modulodcha, .votaciones{display:none}
+.infovideo p.categoria, .infovideo p.descripcion{margin:0}
+
+#a_videos .paginacion, #a_videos .moduloizda, #a_videos .modulodcha{width:auto;float:none;padding:0 15px;margin:0;border:0;background:transparent}
+.modulocentro h3{margin:0;padding:0;background:transparent;font-size:1.4em}
+
+.reproductor{padding-bottom:0}
+	
+#a_eltiempo{padding:0;background:transparent}
+#a_eltiempo .cajatiempo, #a_eltiempo .item{width:100%;background:transparent}
+#a_eltiempo li{width:100%;padding-bottom:10px}
+#a_eltiempo li p, #a_eltiempo li div{float:none;display:inline;margin:0 5px}
+
+.listado_tipo4 dt{width:100%;float:none;clear:left}
+.listado_tipo4 li{width:100%;float:none}
+.listado_tipo4 dd span, .listado_tipo4 dd strong{width:100% !important}
+
+#a_boletinesoficiales dt{width:auto;float:none}
+#a_boletinesoficiales ul{float:none}
+
+#a_rss, #a_rss div, #a_rss ul{background:transparent}
+#a_rss li{width:100% !important}
+
+#a_lomasvotado h3{padding:0;margin:0}
+*>/**/  #a_lomasvotado h3{margin:0}
+
+.ficha_tipo1 h3{font-size:1.4em}
+.ficha_tipo1 .img, p.pdf{display:none}
+
+/*tienda online*/
+#productos{margin:0}
+#productos .moduloizda{padding:0}
+#a_tiendaonline .infotienda{width:96%;padding:10px 2%;background:transparent}
+.listado_tipo4 li{width:auto;border:0 !important;background:transparent !important}
+.listado_tipo4 li div{background:transparent !important}
+#a_tiendaonline .bloque, #a_tiendaonline .cajapestanas{border:0}
+#carrito .cajapestanas{background:transparent}
+#carrito h3{width:100%;float:left}
+.anadircarrito a{display:block}
+
+#cajacarrito .infoproducto{width:100%;padding-left:0 !important}
+#a_tiendaonline .infoenvio{float:none}
+#compra .modulodcha{padding:0 !important}

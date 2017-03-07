@@ -1,0 +1,18 @@
+$(document).ready(function(){
+   inicializarTooltipDossier();
+});
+
+function inicializarTooltipDossier() {
+	$('#a_calendariodossier td[class*=fechaDossier] a').each(function() {
+		var contenido = '<ul class="tooltip">';
+	 	contenido += '<li>' + $(this).attr('title') + '</li>';
+	 	contenido += '</ul>';
+		$(this).attr('title', ''); 	     
+		$(this).qtip({
+		 	content: { text: contenido },		 	
+		 	position: { corner: { target: 'bottomMiddle', tooltip: 'topRight' } },
+		 	style: { fontSize: '0.75em', name: 'dark', tip: 'topRight', title: { fontSize: '0.8em' } },
+			show: { effect: function(){ $(this).animate({"height": "toggle", opacity: 0.85} ) } }
+		});
+	});
+}

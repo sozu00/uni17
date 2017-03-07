@@ -1,0 +1,38 @@
+//----------------------------------------------------------
+//Slider de imagenes (BASIC SLIDER with DIFFERENT DURATIONS)
+//----------------------------------------------------------
+$(document).ready(function() {
+	$('#a_carruseldifdestacadoshome ul').removeClass('hide-with-script');
+	$('#a_carruseldifdestacadoshome').bjqdds({
+		// Width + Height used to ensure consistency
+		width: 750,
+		height: 300,
+		// The type of animation (slide or fade). If it is 'slide', differentDurations is ignored and not implemented.
+		/*animation: 'slide',*/
+		// The duration in ms of the transition between slides
+		animationDuration: 450,
+		// Automatically rotate through the slides
+		automatic: true,
+		// Delay in ms between auto rotation of the slides (ignored if multipleDurations is true, and it's used if it's false, or animation is 'slide')
+		rotationSpeed: 8000,
+		// Pause the slider when any elements receive a hover event
+		hoverPause: true,
+		// Show the manual slider controls
+		showControls: true,
+		// Center the controls vertically
+		centerControls: true,
+		// Text to display in next/prev buttons (can accept html)
+		nextText: 'Siguiente',
+		prevText: 'Anterior',
+		// Show positional markers
+		showMarkers: true,
+		// Center the positional indicators
+		centerMarkers: false,
+		// Allow navigation with arrow keys
+		keyboardNav: true,
+		// Use image title text as caption
+		useCaptions: false,
+		//Each slider has a different duration indicated in attribute 'data-duracion' of the 'li'  tag. It's indicated with the 's' of seconds, like '3s'.
+        differentDurations: true
+	  });
+});

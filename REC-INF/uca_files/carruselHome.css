@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+.modulohome .carrusel{width:100%;float:left;margin-top:10px;padding-bottom:32px;background:transparent url(../../img/css/aplicaciones/fondoCarrusel.gif) repeat-x 0 100%;text-align:center}
+
+/* Contenedor de la galería */
+.galleryview{position:relative;height:350px;margin:0;text-align:left}
+
+/* Contendor de la imagen */
+.panel{width:100%;height:350px;position:absolute;top:0;left:0;overflow:hidden}
+.panel.primero{display:block}
+
+/* Contendedor del texto descriptivo */
+.panel-overlay{position:absolute;bottom:0;left:0;z-index:900;width:94%;height:50px;padding:10px 3%;background:transparent url(../../img/css/aplicaciones/carrusel.png) repeat 0 0;color:#fff}
+.panel-overlay h3, .panel-overlay p{width:100%;margin:0}
+.panel-overlay h3{font-size:1.4em;color:#fff; text-align:center;}
+.panel-overlay a{text-decoration:underline;font-weight:bold;color:#fff}
+
+/* Fondo del texto descriptivo */
+.overlay{}
+
+/* Contenedor de las miniaturas */
+.strip_wrapper{position:absolute;bottom:10px;height:20px;overflow:hidden} /* El width y left se calculan en el js */
+.filmstrip{position:absolute;z-index:900;visibility:hidden;top:0;left:0;height:20px;margin:0 !important;background:transparent;list-style:none} /* El ancho se calcula en el js */
+.filmstrip li{position:relative;z-index:901;height:20px;float:left;margin:0 10px 0 0;padding:0;background:#08688e;cursor:pointer}
+.filmstrip li div{z-index:902;width:20px !important;height:15px;padding:2px 0 3px;border:0;text-align:center !important;color:#fff}
+
+/* Botones de navegación */
+.nav-next, .nav-prev{position:absolute;z-index:1100;cursor:pointer;bottom:5px;width:20px;height:20px} /* El valor de right se calcula en el js */
+
+/* Marcador del elemento actual */
+#pointer{position:absolute;bottom:8px;z-index:1000;height:20px;border:1px solid #fff;cursor:pointer}  /* El width y left se calculan en el js */
+#pointer img{display:none}

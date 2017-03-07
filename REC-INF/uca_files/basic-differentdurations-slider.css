@@ -1,0 +1,14 @@
+/* jQuery Basic Different Duration Slider essential styles */
+
+ul.bjqdds{position:relative;list-style:none;padding:0;margin:0;overflow:hidden}
+li.bjqdds-slide{display:none;position:absolute}
+
+ul.bjqdds-controls{list-style:none;margin:0;padding:0}
+ul.bjqdds-controls li a{display:block;width:35px;height:35px;position:absolute;background:transparent no-repeat 0 0;text-decoration:none;text-indent:-9999px}
+	ul.bjqdds-controls li a.bjqdds-prev{left:0;background-image:url(../img/anterior.png)}
+	ul.bjqdds-controls li a.bjqdds-next{right:0;background-image:url(../img/siguiente.png)}
+
+ol.bjqdds-markers{list-style:none;margin:0;padding:0;position:absolute;bottom:5px;left:8px}
+ol.bjqdds-markers li{float:left;margin:0;padding:0;list-style:none}
+ol.bjqdds-markers li a{display:block;text-decoration:none}
+ol.bjqdds-markers li a:hover, ol.bjqdds-markers li.active-marker a{text-decoration:none!important}

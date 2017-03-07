@@ -1,0 +1,179 @@
+@charset "UTF-8";
+@import "../comunes/error.css";
+
+* {margin:0;padding:0}
+
+body{height:100%;font-family:Arial, Verdana, Helvetica, sans-serif;color:#666;background:#e8e5e0}
+
+form{}
+input, textarea, select{padding:1px 0;border:1px solid #e8e5e0;background:#e8e5e0;font:normal 1em Arial, Verdana, Helvetica, sans-serif;color:#444;}
+
+fieldset{width:100%;float:left;margin-bottom:20px;border:0}
+*>/**/fieldset{margin-bottom:0}
+legend{margin:0 -7px;color:#444;font-weight:bold}
+
+a{outline:none;color:#01678f}
+a:hover{text-decoration:underline !important}
+
+img{border:0}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a{text-decoration:none}
+h2, h3, h4, h5, h6{margin:0 0 3px;color:#123645;font-weight:normal;line-height:normal}
+h2{font-size:2.5em;line-height:1em}
+h3{font-size:1.7em}
+h4{font-size:1.5em}
+h5{margin-bottom:5px}
+h5, h6{font-size:1.2em;font-weight:bold}
+
+ol{margin:0 0 10px 25px}
+ol li{list-style-type:decimal;padding:0 0 5px 0}
+ul{min-height:1em !important;height:auto !important;height:1em;margin:5px 0 10px}
+ul li{padding:0 0 5px 10px;list-style-type:none;background:transparent url(../../img/css/iconos/icono5.gif) no-repeat 0 8px}
+
+dl{margin-bottom:-14px}
+dl, dt, dd{width:100%}
+dd{margin:8px 0 15px;padding-bottom:15px;border-bottom:1px solid #ccc}
+
+table{clear:left;margin:15px 0;border-collapse:collapse;}
+caption{color:#123645;font-weight:normal;text-align:left;font-size:1.7em}
+th, td{padding:10px 15px;border:2px solid #eaeff1;vertical-align:top}
+th{background:#04688f;color:#fff;font-size:1.1em;font-weight:bold}
+td{font-size:1em}
+
+hr{width:100%;height:1px;margin-bottom:10px;border:0;color:#cbcacc;background:#cbcacc}
+*>/**/hr{margin:10px 0 15px}
+
+acronym, abbr{cursor:help;border-bottom:1px dashed #ccc}
+blockquote, cite{cursor:auto}
+code{}
+address{}
+kbd{line-height:2em;font:normal .8em "Lucida console", Courier, monospace;border-top:.15em solid #ccc;border-right:.25em solid #aaa;border-bottom:.3em solid #888;border-left:.2em solid #bbb;padding:.05em .2em;margin:0 1.5px;color:#000;background:#eee;vertical-align: text-bottom;cursor:help}
+em{}
+dfn{}
+p{margin:0 0 15px}
+
+.cursorAdjunto{cursor:pointer}
+.teclaacceso{border-bottom: 1px solid #000}
+.hidden, .mensaje{position:absolute;top:0;left:-4000px;z-index:-100}
+
+/* +++++++ LA ESTRUCTURA ++++++++ */
+#contenedorcuerpo{width:100%;border:0;margin:0 auto;text-align:center}
+.dimensioncuerpo{width:62.5em;margin:0 auto;padding:0;border:0;text-align:left}
+
+.cuerpo{font-size:75%}
+
+#encabezado, #navegacion, #envoltura, #situacion{width:100%;float:left}
+#encabezado, #envoltura{background:#fff}
+#envoltura{background:#fff url(../../img/css/portal/lineaV_2.gif) repeat-y 20.80em 0 }
+*>/**/ #envoltura{background-position:20.79em 0}
+#navegacion{background:#123645}
+#situacion{float:right;border-bottom:1px solid #cecdcf;background:#fff}
+#navegacion2{width:20.8em;float:left;padding-bottom:50px}
+#recurso, #atajo{width:62.5em;float:right}
+#recurso{min-height:500px !important;height:auto !important;height:500px;line-height:1.5em}
+#atajo{border-top:1px solid #cecdcf}
+#pie{width:100%;float:left !important;float:none;background:#b0aeae}
+
+/* +++++++++++++ */
+
+/* encabezado */
+#encabezado{position:relative}
+#encabezado a{text-decoration:none;color:#797a7d}
+h1{float:left;padding-left:15px}
+h1 img{display:block}
+#encabezado .logos{float:left;width:140px;padding:5px 0 0;text-align:center}
+#encabezado .logos img{margin:2px 0 0 0}
+#auxiliar, #utilidades, #idiomas{float:right;margin:0;padding:0 1em 5px}
+
+#auxiliar{width:18.5em;min-height:100px !important;height:auto !important;height:100px;padding-top:20px;border-left:1px solid #000}
+#auxiliar li{padding:0 0 10px 10px;background:transparent url(../../img/css/iconos/icono.gif) no-repeat 0 4px;text-transform:uppercase}
+#auxiliar a{color:#113544}
+#auxiliar a:hover, #auxiliar li.activo a{text-decoration:none !important;color:#f7921e}
+#utilidades{width:6.3em;min-height:110px !important;height:auto !important;height:110px;padding-top:6px;border-left:1px solid #cbcacc}
+*>/**/#utilidades{padding-top:10px}
+#utilidades li{padding:0 0 4px;background:transparent;font-size:.9em}
+#idiomas{width:10.5em;padding-top:100px}
+#idiomas a{padding-left:10px;background:transparent url(../../img/css/iconos/icono.gif) no-repeat 0 4px;font-weight:bold;color:#de6c10}
+
+/* buscador general */
+#buscadorGeneralForm{width:25%;float:right;text-align:center;padding:20px 0;background:#797a7d}
+	#buscadorGeneralForm label input{width:80%;padding:1px 0;border-color:#797a7d;background:#fff}
+	#buscadorGeneralForm .buscar{vertical-align:top;padding:0;border:0}
+
+/* navegacion */
+#n1{width:74.5%;float:left;margin:21px 0 15px;text-transform:uppercase}
+#n1 li{float:left;padding:0 15px;background:transparent}
+#n1 li a{font-size:1.2em;text-decoration:none;color:#fff}
+#n1 li.pmactivocon a{color:#f7921e}
+
+/* compas */
+#compas{padding:5px;background:#e8e5e0;font-size:.9em}
+#compas em{margin-left:10px;font-style:normal;color:#123645}
+#compas ol{display:inline;margin:0}
+#compas li{display:inline;padding:0 10px 0 5px;background:transparent url(../../img/css/iconos/icono2.gif) no-repeat 100% 4px}
+#compas a{text-decoration:none;color:#797a7d}
+#compas .compasactivo{background:transparent;font-weight:bold}
+
+/* punto activo */
+#pactivo{margin:15px 0 3px 20.8em;padding-left:1.5%}
+#pactivo h2{margin:0}
+
+/* navegacion2 */
+#n2{margin:0}
+#n2 ul{margin:0;padding:10px 15px 15px;border-top:1px solid #cecdcf}
+#n2 ul ul{padding:0;border-top:1px solid #fff}
+
+#n2 li{border-bottom:1px solid #cecdcf;padding:0;background:transparent}
+#n2 li li{border-color:#fff;background:#e8e5e0}
+#n2 li li li{border:0;background:#f5f3f1;padding:2px 10px 2px 15px}
+#n2 li li li.primero{padding-top:15px}
+#n2 li li li.ultimo{padding-bottom:15px}
+
+#n2 a{min-height:1em !important;height:auto !important;height:1em;display:block;padding:9px 15px 8px;text-decoration:none;color:#123645;font-size:1.2em}
+#n2 #n3 a{padding:7px 10px 5px;color:#666;font-size:1em}
+#n2 #n3 #n4 a{padding:0 0 0 10px;background:transparent url(../../img/css/iconos/icono4.gif) no-repeat 0 5px;color:#666;font-size:.9em}
+
+#n2 a:hover, #n2 .pmactivocon a, #n2 .pmactivosin a,
+#n2 #n3 a:hover, #n2 #n3 .pmactivocon a, #n2 #n3 .pmactivosin a,
+#n2 #n3 #n4 a:hover, #n2 #n3 #n4 .pmactivosin a{color:#de6c10}
+
+/* addthis */
+.addthis{display:none}
+
+/* atajo */
+#atajo ul{margin:0;padding:10px 10px 5px;text-align:right}
+#atajo li{display:inline;background:transparent;padding:0 0 0 5px}
+#atajo li#atajoVolver{display:none}
+#atajo li.enviarpagina, #atajo li.imprimir{background:transparent url(../../img/css/portal/lineaV_1.gif) repeat-y 0 100%}
+#atajo li.enviarpagina {padding:0 0 0 12px}
+#atajo li.imprimir{padding:0 10px 0 5px;margin-right:10px;background-position:100% 0}
+*>/**/ #atajo li.enviarpagina, *>/**/ #atajo li.imprimir{padding-top:8px}
+
+#atajo a.addthis_button{float:right;position:relative;margin:-24px 13em 0 0;}
+
+/* pie */
+#copyright{margin:0;padding:10px 0;background:#78797c;text-align:center;color:#cccccc;font-weight:bold;font-size:.9em}
+#seccion1, #seccion2, #seccion3, #seccion4{width:20.88%;float:left;margin:0;padding:12px 1.5% 10px 2.5%;min-height:80px !important;height:auto !important;height:80px;border-left:1px solid #cecdcf;font-size:.9em}
+#seccion1{border:0}
+#pie li, #seccion3 p{min-height:1em !important;height:auto !important;height:1em;padding:0 0 2px 10px;background:transparent url(../../img/css/iconos/icono3.gif) no-repeat 0 6px}
+#pie p img{padding-right:5px}
+#pie a{color:#525254;text-decoration:none}
+
+/* popup imagen */
+#a_popupimagen{padding:10px 10px 30px;background:#284956;text-align:center}
+#a_popupimagen img{display:block;margin-bottom:1px;}
+#a_popupimagen div{min-height:1em !important;height:auto !important;height:1em;padding:10px;background:#fff;text-align:left;font-size:75%}
+#a_popupimagen p{width:75%;float:left;margin:0}
+#a_popupimagen a{float:right;margin-top:10px;padding:3px 30px 3px 10px;background:#06688f url(../../img/css/iconos/cerrar.gif) no-repeat 100% 50%;text-decoration:none;font-size:.9em;color:#fff}
+#precarga{position:absolute;top:0;left:0;width:32px;height:32px;background: transparent url(../../img/css/iconos/iconoPrecarga.gif) no-repeat}
+
+/* Clase nueva para plantilla que sustituye a la aplicacion de Menu Desplegable (Formacion */
+
+#subbanner {width:100%;float:left;min-height:300px !important;height:auto !important;height:300px;overflow:hidden;margin-left:-1px;margin-bottom:5px;}
+#subbanner h2{margin:0;padding:23px 7px;background:#133746;color:#fff;text-transform:uppercase}
+#subbanner h2 a{color:#fff}
+#subbanner img{margin-left:0}
+#subbanner ul{margin:0 10px}
+#subbanner li{padding:10px 0;font-size:1.3em;background:transparent;background:transparent url(../../img/css/portal/lineaH_5.gif) repeat-x 0 100%}
+#subbanner li a{padding-left:25px;color:#01678f;text-decoration:none;background:transparent url(../../img/css/iconos/icono6.gif) no-repeat 0 2px}
+#subbanner li a + a{padding:0; background:none;}

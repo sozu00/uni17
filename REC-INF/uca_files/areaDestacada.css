@@ -1,0 +1,57 @@
+@charset "UTF-8";
+@import "../comunes/agendaCalendario.css";
+
+#a_areadestacada, #a_areadestacada .tabs-container {width:100%}
+
+/***** pestanas *****/
+ul.pestanas{width:100%;float:right;margin:0 0 10px;background:#01678f url(../../img/css/aplicaciones/pestanaOff.gif) repeat-x 0 100%}
+ul.pestanas li{width:50%;float:left;padding:0;background:transparent url(../../img/css/aplicaciones/separadorPestana.gif) no-repeat 100% 32px}
+ul.pestanas li.ultimo{background:transparent}
+ul.pestanas li a{display:block;padding:11px 5px 16px;text-align:center;font-size:1.1em;color:#fff;text-decoration:none}
+ul.pestanas li.tabs-selected a{background:transparent url(../../img/css/aplicaciones/pestanaOn.gif) no-repeat 50% 100%}
+
+#a_areadestacada h2{margin:0;padding:0 3% 15px;background:transparent;font-size:2.2em;color:#333}
+#a_areadestacada p.inforesultados{padding:10px 0;margin:0 0 30px;background:#f7f7da;text-align:center;font-weight:bold;font-size:1.1em;color:#ca2727;display:none}
+
+.info{padding:0 3%}
+.info ul{width:100%;float:left;margin:0}
+.info li{width:100%;float:left;padding:0 0 15px;margin-bottom:18px;border-bottom:1px solid #cbcacc;background:transparent}
+
+.info img{float:left;width:105px}
+.info div.conimg{margin-left:125px}
+
+.info .nombre a{margin-right:.2em;font-weight:bold;color:#123645;text-decoration:none;font-size:1.1em}
+.info li p{margin:2px 0 0;font-size:.9em;line-height:1.4em}
+.info li p.descripcion{margin-top:8px;font-size:1.1em}
+.info .fecha{color:#dd6d10;font-style:normal;font-size:.9em}
+.info p img{margin-right:5px;width:auto}
+
+/* para los destacados */
+.info li.destacada{border-color:#01678f}
+.info li.destacada .nombre a{font-size:1.5em;font-weight:normal;line-height:1.2em}
+
+.info p.vertodos{width:100%;float:left;margin:-10px 0 0;padding-bottom:10px;text-align:right;font-size:.9em}
+*>.info p.vertodos{margin-top:10px}
+*>/**/.info p.vertodos{margin-top:-10px}
+.info p.vertodos a{color:#2269aa}
+
+/* especificos */
+#a_noticiadestacada li img{width:105px;height:70px}
+#a_agendadestacada li em.fecha{display:block;margin:2px 0 5px}
+
+#a_dossierdestacado .info{width:94%;float:left;border-bottom:1px solid #cbcacc}
+#a_dossierdestacado .info ul{width:70%}
+#a_dossierdestacado .info li{border:0;background:transparent url(../../img/css/portal/lineaH_5.gif) repeat-x 0 100%}
+#a_dossierdestacado .info li.ultimo{margin-bottom:0;background:transparent}
+#a_dossierdestacado .info li a{padding-left:10px;background:transparent url(../../img/css/iconos/icono5.gif) no-repeat 0 5px}
+
+#a_dossierdestacado .infodossier{width:96%;margin:0 0 20px;padding:15px 2%;float:left;background:#e8e5e0}
+#a_dossierdestacado .infodossier p{margin:0}
+
+#a_calendario, #a_calendariodossier{width:100%;float:left;margin:0 0 20px;border:1px solid #cbcacc;border-width:1px 0}
+#a_calendariodossier {margin-bottom:15px}
+.fechatit{width:16em;float:right;display:inline;margin:12px 3% 0 0}
+.cajacalendario{width:50%;float:left;border-right:1px solid #cbcacc}
+
+.leyenda{float:right;width:48.8%;padding:15px 0;font-size:.9em;border-bottom:0}
+.leyenda ul, .leyenda p{width:96%;padding:0 2%;margin:0}
