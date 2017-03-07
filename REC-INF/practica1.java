@@ -90,9 +90,9 @@ public class practica1{
 
   public static boolean catorce(String cadena) throws Exception{
     String t = Leer.readFile(cadena);
-    Pattern pat = Pattern.compile(".*[\\x3C]img.*[\\x3E].*");
+    Pattern pat = Pattern.compile("<img");
     Matcher mat = pat.matcher(t);
-    return mat.matches();
+    return mat.find();
   }
 
   public static boolean quince(String cadena){
@@ -157,8 +157,7 @@ public class practica1{
     String t = diecisiete(cadena);
     Pattern pat = Pattern.compile(" [0-9]+ ");
     Matcher mat = pat.matcher(t);
-    String resultado = mat.replaceAll(" ");
-    return resultado;
+    return mat.replaceAll(" ");
   }
 
   public static String diecinueve(String cadena) throws Exception{
@@ -179,8 +178,7 @@ public class practica1{
     String t = diecinueve(cadena);
     Pattern patA = Pattern.compile("  ");
     Matcher mat = patA.matcher(t);
-    String resultado = mat.replaceAll(" ");
-    return resultado;
+    return mat.replaceAll(" ");
   }
 
 }
