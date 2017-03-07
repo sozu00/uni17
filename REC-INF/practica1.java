@@ -73,16 +73,56 @@ public class practica1{
   }
 
   public static boolean doce(String cadena){
+    Pattern pat = Pattern.compile("P[ \\x23\\x2D]([ 0-9\\x2D]){5,8}");
+    Matcher mat = pat.matcher(cadena);
+    return mat.matches();
+  }
+
+  public static boolean trece(String cadena){
+    Pattern pat = Pattern.compile("v[i1\\x21][a\\x40]gr[a\\x40]");
+    Matcher mat = pat.matcher(cadena);
+    return mat.matches();
+  }
+
+  public static boolean catorce(String cadena){
     Pattern pat = Pattern.compile("");
     Matcher mat = pat.matcher(cadena);
     return mat.matches();
   }
 
-  public static boolean doce(String cadena){
+  public static boolean quince(String cadena){
     Pattern pat = Pattern.compile("");
     Matcher mat = pat.matcher(cadena);
     return mat.matches();
   }
 
+  public static boolean dieciseis(String cadena){
+    Pattern pat = Pattern.compile("");
+    Matcher mat = pat.matcher(cadena);
+    return mat.matches();
+  }
+  public static boolean diecisiete(String cadena){
+    Pattern pat = Pattern.compile("");
+    Matcher mat = pat.matcher(cadena);
+    return mat.matches();
+  }
+
+  public static boolean dieciocho(String cadena){
+    Pattern pat = Pattern.compile("");
+    Matcher mat = pat.matcher(cadena);
+    return mat.matches();
+  }
+
+  public static boolean diecinueve(String cadena){
+    Pattern pat = Pattern.compile("");
+    Matcher mat = pat.matcher(cadena);
+    return mat.matches();
+  }
+
+  public static boolean veinte(String cadena){
+    Pattern pat = Pattern.compile("");
+    Matcher mat = pat.matcher(cadena);
+    return mat.matches();
+  }
 
 }
