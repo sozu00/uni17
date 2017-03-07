@@ -61,13 +61,23 @@ public class practica1{
   }
 
   public static boolean diez2(String cadena){
+<<<<<<< HEAD
     Pattern pat = Pattern.compile("([0-9]{1,3}[\\x2E]){3}[0-9]{1,3}");
+=======
+    Pattern pat = Pattern.compile("([0-9]{1,3}[\\x2E][0-9]{1,3}){3}[0-9]{1,3}");
+>>>>>>> 7072f343aea7d892b1f9e357f75e062413c4e4ef
     Matcher mat = pat.matcher(cadena);
     return mat.matches();
   }
 
   public static boolean once(String cadena){
-    Pattern pat = Pattern.compile("+34[ ][0-9]{2}[ ][0-9]{7}");
+    Pattern pat = Pattern.compile("[\\x2B]34[ ][0-9]{2}[ ][0-9]{7}");
+    Matcher mat = pat.matcher(cadena);
+    return mat.matches();
+  }
+
+  public static boolean doce(String cadena){
+    Pattern pat = Pattern.compile("");
     Matcher mat = pat.matcher(cadena);
     return mat.matches();
   }
