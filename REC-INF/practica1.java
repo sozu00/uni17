@@ -48,7 +48,7 @@ public class practica1{
     return mat.matches();
   }
 
-  public static boolean diez(String cadena){
+  public static boolean nueve(String cadena){
     Pattern pat = Pattern.compile("[0-9]{1,2}[\\x2F][0-9]{1,2}[\\x2F][0-9]{1,2}");
     Matcher mat = pat.matcher(cadena);
     return mat.matches();
@@ -60,8 +60,8 @@ public class practica1{
     return mat.matches();
   }
 
-  public static boolean diez(String cadena){
-    Pattern pat = Pattern.compile("[0-9]{1,3}[\\x2E][0-9]{1,3}[\\x2E][0-9]{1,3}[\\x2E][0-9]{1,3}");
+  public static boolean diez2(String cadena){
+    Pattern pat = Pattern.compile("([0-9]{1,3}[\\x2E]){3}[0-9]{1,3}");
     Matcher mat = pat.matcher(cadena);
     return mat.matches();
   }
@@ -71,4 +71,12 @@ public class practica1{
     Matcher mat = pat.matcher(cadena);
     return mat.matches();
   }
+
+  public static boolean doce(String cadena){
+    Pattern pat = Pattern.compile("");
+    Matcher mat = pat.matcher(cadena);
+    return mat.matches();
+  }
+
+
 }
