@@ -61,11 +61,7 @@ public class practica1{
   }
 
   public static boolean diez2(String cadena){
-<<<<<<< HEAD
     Pattern pat = Pattern.compile("([0-9]{1,3}[\\x2E]){3}[0-9]{1,3}");
-=======
-    Pattern pat = Pattern.compile("([0-9]{1,3}[\\x2E][0-9]{1,3}){3}[0-9]{1,3}");
->>>>>>> 7072f343aea7d892b1f9e357f75e062413c4e4ef
     Matcher mat = pat.matcher(cadena);
     return mat.matches();
   }
