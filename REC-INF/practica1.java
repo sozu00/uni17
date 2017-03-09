@@ -108,10 +108,8 @@ public class practica1{
   }
 
   public static String dieciseis(String cadena) throws Exception{
-    String t = Leer.readFile(cadena);
     Pattern pat = Pattern.compile("\\p{Punct}");
-    Matcher mat = pat.matcher(cadena);
-    String [] num = pat.split(t);
+    String [] num = pat.split(cadena);
     String resultado = "";
     for(String x : num)  resultado = resultado.concat(x);
     return resultado;
