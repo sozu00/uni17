@@ -88,22 +88,34 @@ public class practica1{
     return mat.matches();
   }
 
-  public static boolean catorce(String cadena) throws Exception{
-    String t = Leer.readFile(cadena);
+  public static int catorce(String cadena) throws Exception{
     Pattern pat = Pattern.compile("<img");
-    Matcher mat = pat.matcher(t);
-    return mat.find();
+    Matcher mat = pat.matcher(cadena);
+    int n=0;
+    while(mat.find())n++;
+    return n;
   }
 
-  public static boolean quince(String cadena){
+  public static boolean quinceWin(String cadena){
     String s = "<a>uno</a><b>dos</b><c>tres</c><d>cuatro</d><e>cinco</e>";
     Pattern pat = Pattern.compile("[\\x3C][^[\\x3E]]*[\\x3E]([^[\\x3C]]*)[\\x3C][\\x2F][^[\\x3E]]*[\\x3E]");
     //Hay una incongruencia en cada </ porque es y no es <.
     Pattern pat2 = Pattern.compile("[\\x3C].*[\\x3E](.*)[\\x3C].*[\\x3E]");
     Pattern pat3 = Pattern.compile("[\\x3C].*?[\\x3E](.*?)[\\x3C].*?[\\x3E]");
-    String [] num = pat3.split(s);
+    String [] num = pat2.split(s);
     for(String x : num)  System.out.print(x);
     Matcher mat = pat.matcher(s);
+    return mat.matches();
+  }
+  public static boolean quince(String cadena){
+    String s = "<a>uno</a><b>dos</b><c>tres</c><d>cuatro</d><e>cinco</e>";
+    Pattern pat = Pattern.compile("<[^>]*>([^<]*)</[^>]*>");
+    //Hay una incongruencia en cada </ porque es y no es <.
+    Pattern pat2 = Pattern.compile("<.*>(.*)<.*>");
+    Pattern pat3 = Pattern.compile("<.*?>(.*?)<.*?>");
+    String [] num = pat.split(s);
+    for(String x : num)  System.out.print(x);
+    Matcher mat = pat2.matcher(s);
     return mat.matches();
   }
 
@@ -115,7 +127,7 @@ public class practica1{
     return resultado;
   }
 
-  public static String diecisiete(String cadena) throws Exception{
+  public static String diecisieteWin(String cadena) throws Exception{
     String t = dieciseis(cadena);
     //Sustituyo el codigo ascii de mierda que me imprime por la letra que corresponde
     Pattern patA = Pattern.compile("[\\u00A1]");
@@ -147,6 +159,36 @@ public class practica1{
     Pattern patG = Pattern.compile("[^\\p{ASCII}]");
     Matcher matG = patG.matcher(resultado);
     resultado = matG.replaceAll("");
+
+    return resultado;
+  }
+
+  public static String diecisiete(String cadena) throws Exception{
+    String t = dieciseis(cadena);
+    //Sustituyo el codigo ascii de mierda que me imprime por la letra que corresponde
+    Pattern patA = Pattern.compile("[áâà]");
+    Matcher matA = patA.matcher(t);
+    String resultado = matA.replaceAll("a");
+
+    Pattern patE = Pattern.compile("[éêè]");
+    Matcher matE = patE.matcher(resultado);
+    resultado = matE.replaceAll("e");
+
+    Pattern patI = Pattern.compile("[íîì]");
+    Matcher matI = patI.matcher(resultado);
+    resultado = matI.replaceAll("i");
+
+    Pattern patO = Pattern.compile("[óôò]");
+    Matcher matO = patO.matcher(resultado);
+    resultado = matO.replaceAll("o");
+
+    Pattern patU = Pattern.compile("[úûù]");
+    Matcher matU = patU.matcher(resultado);
+    resultado = matU.replaceAll("u");
+
+    Pattern patN = Pattern.compile("[ñ]");
+    Matcher matN = patN.matcher(resultado);
+    resultado = matN.replaceAll("n");
 
     return resultado;
   }
