@@ -109,7 +109,7 @@ public class practica1{
   }
   public static boolean quince(String cadena){
     String s = "<a>uno</a><b>dos</b><c>tres</c><d>cuatro</d><e>cinco</e>";
-    Pattern pat = Pattern.compile("<[^>]*>([^<]*)</[^>]*>");
+    Pattern pat = Pattern.compile("<[^>]*>([^<]*)<\/[^>]*>");
     //Hay una incongruencia en cada </ porque es y no es <.
     Pattern pat2 = Pattern.compile("<.*>(.*)<.*>");
     Pattern pat3 = Pattern.compile("<.*?>(.*?)<.*?>");
