@@ -115,32 +115,27 @@ public class practica1{
 
   public static String diecisiete(String cadena) throws Exception{
     String t = dieciseis(cadena);
-    //Sustituyo el codigo ascii de mierda que me imprime por la letra que corresponde
-    Pattern patA = Pattern.compile("[áâà]");
-    Matcher matA = patA.matcher(t);
-    String resultado = matA.replaceAll("a");
-
-    Pattern patE = Pattern.compile("[éêè]");
-    Matcher matE = patE.matcher(resultado);
-    resultado = matE.replaceAll("e");
-
-    Pattern patI = Pattern.compile("[íîì]");
-    Matcher matI = patI.matcher(resultado);
-    resultado = matI.replaceAll("i");
-
-    Pattern patO = Pattern.compile("[óôò]");
-    Matcher matO = patO.matcher(resultado);
-    resultado = matO.replaceAll("o");
-
-    Pattern patU = Pattern.compile("[úûù]");
-    Matcher matU = patU.matcher(resultado);
-    resultado = matU.replaceAll("u");
-
-    Pattern patN = Pattern.compile("[ñ]");
-    Matcher matN = patN.matcher(resultado);
-    resultado = matN.replaceAll("n");
-
-    return resultado;
+    String [] letras = {"á","â","à","é","ê","è","í","î","ì","ó","ô","ò","ú","û","ù","ñ"};
+    Pattern p;
+    Matcher m;
+    String opcion;
+    for(String c : letras){
+      switch(c){
+        case "á": case "â": case "à": opcion = "a"; break;
+        case "é": case "ê": case "è": opcion = "e"; break;
+        case "í": case "î": case "ì": opcion = "i"; break;
+        case "ó": case "ô": case "ò": opcion = "o"; break;
+        case "ú": case "û": case "ù": opcion = "u"; break;
+        case "ñ": opcion = "n"; break;
+        default: opcion = ""; break;
+      }
+      if(opcion != ""){
+        p = Pattern.compile(c);
+        m = p.matcher(t);
+        t = m.replaceAll(opcion);
+      }
+    }
+    return t;
   }
 
   public static String dieciocho(String cadena) throws Exception{
@@ -152,13 +147,13 @@ public class practica1{
 
   public static String diecinueve(String cadena) throws Exception{
     String t = dieciocho(cadena);
-    Pattern patA = Pattern.compile("[\\p{Alpha}]");
-    Matcher mat = patA.matcher(t);
-    StringBuffer resultado = new StringBuffer(); //El append sol funciona con stringbuffer
+    Pattern p = Pattern.compile("[a-z]");
+    Matcher m = p.matcher(t);
+    StringBuffer resultado = new StringBuffer(); //El append solo funciona con stringbuffer
 
     //Para TODAS LAS LETRAS
-    while(mat.find()){
-      mat.appendReplacement(resultado, mat.group().toUpperCase()); //Añade al buffer el texto en caps
+    while(m.find()){
+      m.appendReplacement(resultado, m.group().toUpperCase()); //Añade al buffer el texto en caps
     }
 
     return resultado.toString();
