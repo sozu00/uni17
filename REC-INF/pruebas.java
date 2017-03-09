@@ -5,6 +5,6 @@ public class pruebas {
     String texto = Leer.readFile(cadena);
     /*if (practica1.dieciseis(cadena)) System.out.println("VERDADERO");
     else System.out.println("FALSO");*/
-    System.out.println(practica1.catorce(texto));
+    System.out.println(practica1.quince(texto));
   }
 }

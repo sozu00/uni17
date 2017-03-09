@@ -109,13 +109,13 @@ public class practica1{
   }
   public static boolean quince(String cadena){
     String s = "<a>uno</a><b>dos</b><c>tres</c><d>cuatro</d><e>cinco</e>";
-    Pattern pat = Pattern.compile("<[^>]*>([^<]*)<\/[^>]*>");
-    //Hay una incongruencia en cada </ porque es y no es <.
-    Pattern pat2 = Pattern.compile("<.*>(.*)<.*>");
-    Pattern pat3 = Pattern.compile("<.*?>(.*?)<.*?>");
+    Pattern pat = Pattern.compile("<.{1,2}>");
+    
+    Pattern pat2 = Pattern.compile("<.*>(.*)<\\/.*>");
+    Pattern pat3 = Pattern.compile("<.*?>(.*?)<\\/.*?>");
     String [] num = pat.split(s);
     for(String x : num)  System.out.print(x);
-    Matcher mat = pat2.matcher(s);
+    Matcher mat = pat3.matcher(s);
     return mat.matches();
   }
 
