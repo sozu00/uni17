@@ -150,7 +150,6 @@ public class practica1{
     Pattern p = Pattern.compile("[a-z]");
     Matcher m = p.matcher(t);
     StringBuffer resultado = new StringBuffer(); //El append solo funciona con stringbuffer
-
     //Para TODAS LAS LETRAS
     while(m.find()){
       m.appendReplacement(resultado, m.group().toUpperCase()); //Añade al buffer el texto en caps
