@@ -41,7 +41,7 @@ int profundidadNodo(Abin<T>& A, typename Abin<T>::nodo n){
 int main(){
   Abin<int> a;
   a.insertarRaizB(0);
-
+  std::cout << "JAJAJAJ" << std::endl;
   a.insertarHijoIzqdoB(a.raizB(), 1);
   a.insertarHijoDrchoB(a.raizB(), 2);
   a.insertarHijoIzqdoB(a.hijoIzqdoB(a.raizB()), 3);
