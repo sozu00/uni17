@@ -53,36 +53,35 @@ void Abin<T>::insertarRaizB(const T& e){
 	assert(numNodos == 0);// árbol vacío
 	numNodos = 1;
 	nodos[(maxNodos+1)/2].elto = e;
-	nodos[0].padre = NODO_NULO;
-	nodos[0].hizq = NODO_NULO;
-	nodos[0].hder = NODO_NULO;
+	nodos[(maxNodos+1)/2].padre = NODO_NULO;
+	nodos[(maxNodos+1)/2].hizq = NODO_NULO;
+	nodos[(maxNodos+1)/2].hder = NODO_NULO;
 }
 
 template <typename T>
 void Abin<T>::insertarHijoIzqdoB(Abin<T>::nodo n, const T& e){
 	assert(n >= 0 && n < numNodos); // nodo válido
-	assert(nodos[n].hizq == NODO_NULO); // n no tiene hijo izqdo.
+	assert(nodos[nodos[(n - (maxNodos+1)/(pow(2,prof(n)))].hizq == NODO_NULO); // n no tiene hijo izqdo.
 	assert(numNodos < maxNodos); // árbol no lleno
 // añadir el nuevo nodo al final de la secuencia
-	nodos[n + (maxNodos+1)/pow(2, prof(n)+2)].hizq = numNodos;
-	nodos[numNodos].elto = e;
-	nodos[numNodos].padre = n;
-	nodos[numNodos].hizq = NODO_NULO;
-	nodos[numNodos].hder = NODO_NULO;
+	nodos[n].hizq = nodos[(n-(maxNodos+1)/(pow(2,prof(n)));
+	nodos[nodos[(n - (maxNodos+1)/(pow(2,prof(n)))].elto = e;
+	nodos[nodos[(n - (maxNodos+1)/(pow(2,prof(n)))].padre = n;
+	nodos[nodos[(n - (maxNodos+1)/(pow(2,prof(n)))].hizq = NODO_NULO;
+	nodos[nodos[(n - (maxNodos+1)/(pow(2,prof(n)))].hder = NODO_NULO;
 	numNodos++;
 }
 
 template <typename T>
 void Abin<T>::insertarHijoDrchoB(Abin<T>::nodo n, const T& e){
 	assert(n >= 0 && n < numNodos); // nodo válido
-	assert(nodos[n].hder == NODO_NULO); // n no tiene hijo drcho.
+	assert(nodos[nodos[(n - (maxNodos+1)/(pow(2,prof(n)))].hder == NODO_NULO); // n no tiene hijo drcho.
 	assert(numNodos < maxNodos); // árbol no lleno
-// añadir el nuevo nodo al final de la secuencia
-	nodos[n].hder = numNodos;
-	nodos[numNodos].elto = e;
-	nodos[numNodos].padre = n;
-	nodos[numNodos].hizq = NODO_NULO;
-	nodos[numNodos].hder = NODO_NULO;
+	nodos[n].hder = nodos[(n+(maxNodos+1)/(pow(2,prof(n)));
+	nodos[nodos[(n + (maxNodos+1)/(pow(2,prof(n)))].elto = e;
+	nodos[nodos[(n + (maxNodos+1)/(pow(2,prof(n)))].padre = n;
+	nodos[nodos[(n + (maxNodos+1)/(pow(2,prof(n)))].hizq = NODO_NULO;
+	nodos[nodos[(n + (maxNodos+1)/(pow(2,prof(n)))].hder = NODO_NULO;
 	numNodos++;
 }
 
