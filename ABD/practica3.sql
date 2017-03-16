@@ -24,8 +24,8 @@ CREATE TABLE Proyectos(
 CREATE TABLE EmpleadoProyecto(
   DNI VARCHAR(9) NOT NULL,
   proy_id INT NOT NULL,
-  FOREIGN KEY (DNI) REFERENCES Empleados(DNI),
-  FOREIGN KEY (proy_id) REFERENCES Proyectos(proy_id),
+  CONSTRAINT DNI FOREIGN KEY (DNI) REFERENCES Empleados(DNI),
+  CONSTRAINT proy_id FOREIGN KEY (proy_id) REFERENCES Proyectos(proy_id),
   PRIMARY KEY (DNI, proy_id)
 );
 
@@ -78,10 +78,13 @@ GRANT INSERT, DELETE, UPDATE, SELECT ON * . * TO 'modifica'@'localhost';
 GRANT SELECT ON * . * TO 'consulta'@'localhost';
 
 FLUSH PRIVILEGES;
-
+*/
 
 ALTER TABLE Empleados DROP FOREIGN KEY dep_id;
-ALTER TABLE Empleados DROP COLUMN dep_id;
-ALTER TABLE Empleados ADD COLUMN dep_id INT;
+ALTER TABLE Empleados MODIFY COLUMN dep_id INT;
 ALTER TABLE Empleados ADD CONSTRAINT dep_id FOREIGN KEY (dep_id) REFERENCES Departamento(dep_id) ON DELETE SET NULL;
-*/
+
+ALTER TABLE EmpleadoProyecto DROP FOREIGN KEY DNI;
+ALTER TABLE EmpleadoProyecto DROP FOREIGN KEY proy_id;
+ALTER TABLE EmpleadoProyecto ADD CONSTRAINT DNI FOREIGN KEY (DNI) REFERENCES Empleados(DNI) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE EmpleadoProyecto ADD CONSTRAINT proy_id FOREIGN KEY (proy_id) REFERENCES Proyectos(proy_id) ON DELETE CASCADE ON UPDATE CASCADE;
