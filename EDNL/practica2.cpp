@@ -49,7 +49,7 @@ struct componente{
 };
 
 double aritmeticaRec(Abin<componente>& A, typename Abin<componente>::nodo n){
-  if(A.hijoIzqdoB(n) != Abin<componente>::NODO_NULO){
+  if(A.hijoIzqdoB(n) != Abin<componente>::NODO_NULO){//Si el nodo tiene HijoIzq tiene q ser un OPERADOR (o tiene 2 o ninguno), sino, es un operando
       if(A.elemento(n).operador == '+') return aritmeticaRec(A, A.hijoIzqdoB(n)) + aritmeticaRec(A, A.hijoDrchoB(n));
       if(A.elemento(n).operador == '-') return aritmeticaRec(A, A.hijoIzqdoB(n)) - aritmeticaRec(A, A.hijoDrchoB(n));
       if(A.elemento(n).operador == '*') return aritmeticaRec(A, A.hijoIzqdoB(n)) * aritmeticaRec(A, A.hijoDrchoB(n));
