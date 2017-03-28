@@ -50,7 +50,7 @@ int desequilibrioNodo(Agen<T> &A, typename Agen<T>::nodo n){
     int alturaMax = 0;
     int alturaMin = altura(A, n);
     int desMax= 0;
-    int difMax;
+    int difAlt;
     for(typename Agen<T>::nodo her = A.hijoIzqdo(n); her != Agen<T>::NODO_NULO; her = A.hermDrcho(her)){
       int alt = altura(A, her);
       int des = desequilibrioNodo(A, her);
@@ -70,14 +70,14 @@ int desequilibrio(Agen<T> &A){
 }
 
 template <typename T>
-Agen<T>::nodo busquedaNodo(Agen<T> &A, typename Agen<T>::nodo n, int x){
-  Agen<T>::nodo rec = n;
+typename Agen<T>::nodo busquedaNodo(Agen<T> &A, typename Agen<T>::nodo n, int x){
+  typename Agen<T>::nodo rec = n;
   if(A.elemento(rec) == x) return rec;
   rec = busquedaNodo(A, A.hijoIzqdo(rec), x);
   if(A.elemento(rec) == x) return rec;
   rec = busquedaNodo(A, A.hermDrcho(rec), x);
   if(A.elemento(rec) == x) return rec;
-  return NODO_NULO;
+  return Agen<T>::NODO_NULO;
 }
 
 template <typename T>
@@ -92,7 +92,7 @@ void podar(Agen<T> &A, typename Agen<T>::nodo n){
 
 template <typename T>
 void podaArbol(Agen<T> &A, int x){
-  Agen<T>::nodo n = busquedaNodo(A,A.raiz(), x);
+  typename Agen<T>::nodo n = busquedaNodo(A,A.raiz(), x);
   podar(A, n);
 }
 
