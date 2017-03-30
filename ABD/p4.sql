@@ -1,5 +1,5 @@
 use banco;
-/*
+
 CREATE TABLE Banco (
   Numero_cuenta char(20) NOT NULL,
   Nombre varchar(50) ,
@@ -39,13 +39,22 @@ INSERT INTO Banco (Numero_cuenta, Nombre, Apellidos, Saldo) VALUES ("12345678901
 
 INSERT INTO Operacion(asunto, cantidad, cuenta) VALUES ("incremento", 100, "12345678901234567890");
 
-*/
+
 DELIMITER $$
 CREATE PROCEDURE transaccion(IN cuenta1 CHAR(20), IN cuenta2 CHAR(20), IN cant FLOAT, IN concepto VARCHAR(100))
 BEGIN
+  DECLARE EXIT HANDLER FOR 1452 ROLLBACK;
+  START TRANSACTION;
+  IF cant < 0 THEN
+    SIGNAL SQLSTATE 'ERROR' SET MESSAGE_TEXT = 'Cantidad negativa';
+  END IF;
   INSERT INTO Operacion(asunto, cantidad, cuenta) VALUES (concepto, -cant, cuenta1);
   INSERT INTO Operacion(asunto, cantidad, cuenta) VALUES (concepto, cant, cuenta2);
+
+  COMMIT;
 END$$
 DELIMITER ;
 
-call transaccion(12345678901234567, 12345678901234567891, 1000, 'transaccionPRUEBA');
+
+/*call transaccion(12345678901234567890, 12345678901234567891, -1000, 'transaccionPRUEBA');
+*/
