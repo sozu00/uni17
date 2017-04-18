@@ -12,7 +12,6 @@ public:
 	Apo(const Apo<T>& a); // ctor. de copia
 	Apo<T>& operator =(const Apo<T>& a); // asignaci�n de apo
 	~Apo(); // destructor
-	void insertarMinMax(const T& e);
 private:
 	typedef int nodo; // �ndice del vector
 	// entre 0 y maxNodos-1
@@ -114,46 +113,5 @@ Apo<T>& Apo<T>::operator =(const Apo<T>& a)
 }
 	return *this;
 }
-template <typename T>
-void Apo<T>::insertarMinMax(const T& e){
-  int pos = (maxNodos-1);
-  nodos[pos] = e;
-  int nivel = (int) floor(log(maxNodos));
-  int paridad = nivel%2;
-  T aux;
-
-  if(paridad == 0 && nodos[pos]>nodos[pos/2]) {
-    aux = nodos[pos];
-    nodos[pos] = nodos[pos/2];
-    nodos[pos/2] = aux;
-    pos = pos/2;
-    paridad = 1;
-  }
-  if(paridad != 0 && nodos[pos]<nodos[pos/2]) {
-    aux = nodos[pos];
-    nodos[pos] = nodos[pos/2];
-    nodos[pos/2] = aux;
-    pos = pos/2;
-    paridad = 0;
-  }
-
-  if(paridad == 0){
-    while(nodos[pos]<nodos[pos/4]) {
-      aux = nodos[pos];
-      nodos[pos] = nodos[pos/4];
-      nodos[pos/4] = aux;
-      pos = pos/4;
-    }
-  }
-  if(paridad != 0){
-    while(nodos[pos]>nodos[pos/4]) {
-      aux = nodos[pos];
-      nodos[pos] = nodos[pos/4];
-      nodos[pos/4] = aux;
-      pos = pos/4;
-    }
-  }
-}
-
 
 #endif // APO_H

@@ -1,11 +1,11 @@
 #ifndef ABB_H_
 #define ABB_H_
 #include <cassert>
-#include "Abin.h"
+#include "abin.h"
 
-template <typename T> 
+template <typename T>
 class Abb {
-    struct celda;   // declaración adelantada privada
+    struct celda;   // declaraciï¿½n adelantada privada
     public:
         typedef celda* nodo;
         static const nodo NODO_NULO;
@@ -15,25 +15,25 @@ class Abb {
         void eliminar(const T& e);
         bool vacio() const;
         Abb(const Abb<T>& a);                 // ctor. de copia
-        Abb<T>& operator =(const Abb<T>& a);  // asig. árboles
+        Abb<T>& operator =(const Abb<T>& a);  // asig. ï¿½rboles
         //Ejercicio 1
         operator Abin<T>();
         //Ejercicio 2
         void eliminarNodo(const T& e);
         ~Abb();   							//Destructor
-    private:                            
+    private:
         struct celda {
             T elto;
             nodo hizq, hder;
             celda(const T& e): elto(e), hizq(NODO_NULO), hder(NODO_NULO) {}
         };
-        nodo r;   // nodo raíz del árbol
+        nodo r;   // nodo raï¿½z del ï¿½rbol
         T borrarMin(nodo& n);
         nodo copiar(nodo n);
         void copiarnodos(nodo, typename Abin<T>::nodo, Abin<T>&) const;
         void eliminarNodos(nodo n);
 };
-/* Definición del nodo nulo */
+/* Definiciï¿½n del nodo nulo */
 template <typename T>
 const typename Abb<T>::nodo Abb<T>::NODO_NULO(0);
 
@@ -50,19 +50,19 @@ template <typename T>
 typename Abb<T>::nodo Abb<T>::buscar(const T& e) const
 {
     nodo n;
-    if (r == NODO_NULO)     // árbol vacío, e no encontrado
+    if (r == NODO_NULO)     // ï¿½rbol vacï¿½o, e no encontrado
         n = NODO_NULO;
-    else if (e == r->elto)  // encontrado e en la raíz
+    else if (e == r->elto)  // encontrado e en la raï¿½z
         n = r;
-    else if (e < r->elto) { // buscar en subárbol izqdo.
+    else if (e < r->elto) { // buscar en subï¿½rbol izqdo.
         Abb<T> Ai(r->hizq);
         n = Ai.buscar(e);
-        Ai.r = NODO_NULO;    // impide destruir el subárbol izqui
+        Ai.r = NODO_NULO;    // impide destruir el subï¿½rbol izqui
     }
-    else {                  // buscar en subárbol drcho.
+    else {                  // buscar en subï¿½rbol drcho.
         Abb<T> Ad(r->hder);
         n = Ad.buscar(e);
-        Ad.r = NODO_NULO;    // impide destruir el subárbol derecho
+        Ad.r = NODO_NULO;    // impide destruir el subï¿½rbol derecho
     }
     return n;
 }
@@ -70,20 +70,20 @@ typename Abb<T>::nodo Abb<T>::buscar(const T& e) const
 template <typename T>
 void Abb<T>::insertar(const T& e)
 {
-    if (r == NODO_NULO)         // árbol vacío
+    if (r == NODO_NULO)         // ï¿½rbol vacï¿½o
         r = new celda(e);
-    else if (!(e == r->elto)) { // e no está en la raíz.
-        if (e < r->elto) {       // insertar en el subárbol izqdo.
+    else if (!(e == r->elto)) { // e no estï¿½ en la raï¿½z.
+        if (e < r->elto) {       // insertar en el subï¿½rbol izqdo.
             Abb<T> Ai(r->hizq);
             Ai.insertar(e);
             r->hizq = Ai.r;
-            Ai.r = NODO_NULO;     // impide destruir el subárbol drcho.
+            Ai.r = NODO_NULO;     // impide destruir el subï¿½rbol drcho.
         }
-        else {  // insertar en el subárbol drcho.
+        else {  // insertar en el subï¿½rbol drcho.
             Abb<T> Ad(r->hder);
             Ad.insertar(e);
             r->hder = Ad.r;
-            Ad.r = NODO_NULO;     // impide destruir el subárbol drcho.
+            Ad.r = NODO_NULO;     // impide destruir el subï¿½rbol drcho.
         }
     }
 }
@@ -91,47 +91,47 @@ void Abb<T>::insertar(const T& e)
 template <typename T>
 void Abb<T>::eliminar(const T& e)
 {
-    if (r != NODO_NULO) {  // árbol no vacío
-        if (e == r->elto) { // quitar elemento de la raíz
-            if (r->hizq == NODO_NULO && r->hder == NODO_NULO) {//1.Raíz es hoja
+    if (r != NODO_NULO) {  // ï¿½rbol no vacï¿½o
+        if (e == r->elto) { // quitar elemento de la raï¿½z
+            if (r->hizq == NODO_NULO && r->hder == NODO_NULO) {//1.Raï¿½z es hoja
                 delete(r);
-                r = NODO_NULO;   // el árbol queda vacío
+                r = NODO_NULO;   // el ï¿½rbol queda vacï¿½o
             }
-            else if (r->hder == NODO_NULO) { // 2.Raíz sólo tiene hijo izqdo.
+            else if (r->hder == NODO_NULO) { // 2.Raï¿½z sï¿½lo tiene hijo izqdo.
                 nodo n = r->hizq;
                 delete(r);
-                r = n;                    // nueva raíz el antiguo hijo izqdo.
+                r = n;                    // nueva raï¿½z el antiguo hijo izqdo.
             }
-            else if (r->hizq == NODO_NULO) { // 3.Raíz sólo tiene hijo drcho.
+            else if (r->hizq == NODO_NULO) { // 3.Raï¿½z sï¿½lo tiene hijo drcho.
                 nodo n = r->hder;
                 delete(r);
-                r = n;                    // nueva raíz el antiguo hijo drcho.
+                r = n;                    // nueva raï¿½z el antiguo hijo drcho.
             }
-            else // 4.La raíz tiene dos hijos.
-                r->elto = borrarMin(r->hder); // sustituir el elemento de la 
-// raíz por el mínimo del 
-// subárbol derecho
+            else // 4.La raï¿½z tiene dos hijos.
+                r->elto = borrarMin(r->hder); // sustituir el elemento de la
+// raï¿½z por el mï¿½nimo del
+// subï¿½rbol derecho
         }
-        else if (e < r->elto) {//quitar elemento del subárbol izqdo.
+        else if (e < r->elto) {//quitar elemento del subï¿½rbol izqdo.
             Abb<T> Ai(r->hizq);
             Ai.eliminar(e);
             r->hizq = Ai.r;
-            Ai.r = NODO_NULO; // impide destruir el subárbol izqdo.
+            Ai.r = NODO_NULO; // impide destruir el subï¿½rbol izqdo.
         }
-        else {               // quitar elemento del subárbol drcho.
+        else {               // quitar elemento del subï¿½rbol drcho.
             Abb<T> Ad(r->hder);
             Ad.eliminar(e);
             r->hder = Ad.r;
-            Ad.r = NODO_NULO; // impide destruir el subárbol drcho.
+            Ad.r = NODO_NULO; // impide destruir el subï¿½rbol drcho.
         }
     }
 }
 
-// Método privado
+// Mï¿½todo privado
 template <typename T>
 T Abb<T>::borrarMin(Abb<T>::nodo& n)
 // Elimina el nodo que almacena el menor elemento
-// del subárbol cuya raíz es n. Devuelve el elemento
+// del subï¿½rbol cuya raï¿½z es n. Devuelve el elemento
 // del nodo eliminado
 {
     if (n->hizq == NODO_NULO) {
@@ -154,8 +154,8 @@ inline Abb<T>::Abb(const Abb<T>& a)
 template <typename T>
 Abb<T>& Abb<T>::operator =(const Abb<T>& a)
 {
-    if (this != &a) {   // evitar autoasignación
-        this->~Abb();    // vaciar el árbol
+    if (this != &a) {   // evitar autoasignaciï¿½n
+        this->~Abb();    // vaciar el ï¿½rbol
         r = copiar(a.r);
     }
     return *this;
@@ -164,13 +164,13 @@ Abb<T>& Abb<T>::operator =(const Abb<T>& a)
 template <typename T>
 inline Abb<T>::~Abb()
 {
-    if (r != NODO_NULO) {   // árbol no vacío
+    if (r != NODO_NULO) {   // ï¿½rbol no vacï¿½o
         Abb<T> Ai(r->hizq),
         Ad(r->hder);
         delete r;
     }
 }
-// Método privado
+// Mï¿½todo privado
 template <typename T>
 typename Abb<T>::nodo Abb<T>::copiar(Abb<T>::nodo n)
 // Devuelve una copia del nodo n y todos sus descendientes
@@ -178,8 +178,8 @@ typename Abb<T>::nodo Abb<T>::copiar(Abb<T>::nodo n)
     nodo m = NODO_NULO;
     if (n != NODO_NULO) {
         m = new celda(n->elto);    // copiar n
-        m->hizq = copiar(n->hizq); // copiar subárbol izqdo.
-        m->hder = copiar(n->hder); // copiar subárbol drcho.
+        m->hizq = copiar(n->hizq); // copiar subï¿½rbol izqdo.
+        m->hder = copiar(n->hder); // copiar subï¿½rbol drcho.
     }
     return m;
 }
@@ -187,7 +187,7 @@ typename Abb<T>::nodo Abb<T>::copiar(Abb<T>::nodo n)
 //Ejercicio 1
 
 template <typename T>
-Abb<T>::operator Abin<T>() 
+Abb<T>::operator Abin<T>()
 {
     Abin<T> arb;
     if(!vacio())
@@ -226,7 +226,7 @@ void Abb<T>::eliminarNodos(Abb<T>::nodo n){
 		eliminarNodos(n->hizq);
 		eliminarNodos(n->hder);
 		eliminar(n->elto);
-	}	
+	}
 }
 
 #endif // ABB_H
