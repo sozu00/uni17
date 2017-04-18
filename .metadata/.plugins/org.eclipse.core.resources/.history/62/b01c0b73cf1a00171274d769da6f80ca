@@ -1,0 +1,21 @@
+import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class benchmark{
+  public static void main(String [] args){
+    MysqlDataSource dataSource = new MysqlDataSource();
+    dataSource.setUser("scott");
+    dataSource.setPassword("tiger");
+    dataSource.setServerName("myDBHost.example.org");
+
+    Connection conn = dataSource.getConnection();
+    Statement stmt = conn.createStatement();
+    ResultSet rs = stmt.executeQuery("SELECT ID FROM USERS");
+
+    rs.close();
+    stmt.close();
+    conn.close();
+  }
+}
