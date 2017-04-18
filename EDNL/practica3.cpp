@@ -97,6 +97,7 @@ void podaArbol(Agen<T> &A, int x){
 }
 
 
+/*
 int main(){
   Agen<int> A;
   A.crearRaiz(0);
@@ -106,3 +107,4 @@ int main(){
   A.insertarHermDrcho(A.hijoIzqdo(A.raiz()), 2);
   std::cout << altura(A, A.raiz()) << std::endl;
 }
+*/

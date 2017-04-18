@@ -4,33 +4,34 @@
 
 template <typename T> class Apo {
 public:
-	explicit Apo(size_t maxNodos); // constructor
+	explicit Apo(int maxNodos); // constructor
 	void insertar(const T& e);
 	void suprimir();
 	T cima() const;
 	bool vacio() const;
 	Apo(const Apo<T>& a); // ctor. de copia
-	Apo<T>& operator =(const Apo<T>& a); // asignación de apo
+	Apo<T>& operator =(const Apo<T>& a); // asignaciï¿½n de apo
 	~Apo(); // destructor
+	void insertarMinMax(const T& e);
 private:
-	typedef int nodo; // índice del vector
+	typedef int nodo; // ï¿½ndice del vector
 	// entre 0 y maxNodos-1
 	T* nodos; // vector de nodos
-	int maxNodos; // tamaño del vector
-	nodo ultimo; // último nodo del árbol
+	int maxNodos; // tamaï¿½o del vector
+	nodo ultimo; // ï¿½ltimo nodo del ï¿½rbol
 };
 
 template <typename T>
-inline Apo<T>::Apo(size_t maxNodos) :
+inline Apo<T>::Apo (int maxNodos) :
 	nodos(new T[maxNodos]),
 	maxNodos(maxNodos),
-	ultimo(-1) // apo vacío
+	ultimo(-1) // apo vacï¿½o
 {}
 
 template <typename T>
 inline T Apo<T>::cima() const
 {
-	assert(ultimo > -1); // apo no vacío
+	assert(ultimo > -1); // apo no vacï¿½o
 	return nodos[0];
 }
 
@@ -55,12 +56,12 @@ inline void Apo<T>::insertar(const T& e)
 template <typename T>
 void Apo<T>::suprimir()
 {
-	assert(ultimo > -1); // apo no vacío
+	assert(ultimo > -1); // apo no vacï¿½o
 	T e = nodos[ultimo];
 	--ultimo;
-	if (ultimo > -1) { // apo no vacío.
+	if (ultimo > -1) { // apo no vacï¿½o.
 		nodo p = 0;
-		if (ultimo > 0) { // quedan dos o más elementos. Reordenar
+		if (ultimo > 0) { // quedan dos o mï¿½s elementos. Reordenar
 		bool fin = false;
 		while (p <= (ultimo-1)/2 && !fin) { // hundir e
 			nodo pMin; // hijo menor del nodo p
@@ -99,7 +100,7 @@ Apo<T>::Apo(const Apo<T>& a) :
 template <typename T>
 Apo<T>& Apo<T>::operator =(const Apo<T>& a)
 {
-	if (this != &a) { // evitar autoasignación
+	if (this != &a) { // evitar autoasignaciï¿½n
 	// Destruir el vector y crear uno nuevo si es necesario
 	if (maxNodos != a.maxNodos) {
 		delete[] nodos;
@@ -110,8 +111,49 @@ Apo<T>& Apo<T>::operator =(const Apo<T>& a)
 // Copiar el vector
 	for (nodo n = 0; n <= ultimo; n++)
 		nodos[n] = a.nodos[n];
-}	
+}
 	return *this;
 }
+template <typename T>
+void Apo<T>::insertarMinMax(const T& e){
+  int pos = (maxNodos-1);
+  nodos[pos] = e;
+  int nivel = (int) floor(log(maxNodos));
+  int paridad = nivel%2;
+  T aux;
+
+  if(paridad == 0 && nodos[pos]>nodos[pos/2]) {
+    aux = nodos[pos];
+    nodos[pos] = nodos[pos/2];
+    nodos[pos/2] = aux;
+    pos = pos/2;
+    paridad = 1;
+  }
+  if(paridad != 0 && nodos[pos]<nodos[pos/2]) {
+    aux = nodos[pos];
+    nodos[pos] = nodos[pos/2];
+    nodos[pos/2] = aux;
+    pos = pos/2;
+    paridad = 0;
+  }
+
+  if(paridad == 0){
+    while(nodos[pos]<nodos[pos/4]) {
+      aux = nodos[pos];
+      nodos[pos] = nodos[pos/4];
+      nodos[pos/4] = aux;
+      pos = pos/4;
+    }
+  }
+  if(paridad != 0){
+    while(nodos[pos]>nodos[pos/4]) {
+      aux = nodos[pos];
+      nodos[pos] = nodos[pos/4];
+      nodos[pos/4] = aux;
+      pos = pos/4;
+    }
+  }
+}
+
 
 #endif // APO_H
