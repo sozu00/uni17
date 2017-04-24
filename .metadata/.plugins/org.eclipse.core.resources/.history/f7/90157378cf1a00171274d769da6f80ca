@@ -1,5 +1,0 @@
-public class clase{
-public static void main ([] args){
-  System.out.println("Hola Mundo");
-}
-}
