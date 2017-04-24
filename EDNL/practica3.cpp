@@ -71,29 +71,30 @@ int desequilibrio(Agen<T> &A){
 
 template <typename T>
 typename Agen<T>::nodo busquedaNodo(Agen<T> &A, typename Agen<T>::nodo n, int x){
-  typename Agen<T>::nodo rec = n;
-  if(A.elemento(rec) == x) return rec;
-  rec = busquedaNodo(A, A.hijoIzqdo(rec), x);
-  if(A.elemento(rec) == x) return rec;
-  rec = busquedaNodo(A, A.hermDrcho(rec), x);
-  if(A.elemento(rec) == x) return rec;
+  if(n != Agen<T>::NODO_NULO){
+    if(A.elemento(rec) == x) return n;
+    for(typename Agen<T>::nodo her = A.hijoIzqdo(n); her != Agen<T>::NODO_NULO; her = A.hermDrcho(her))
+      if(A.elemento(busquedaNodo(A, her, x)) == x) return her;
+  }
   return Agen<T>::NODO_NULO;
 }
 
 template <typename T>
-void podar(Agen<T> &A, typename Agen<T>::nodo n){
+bool podar(Agen<T> &A, typename Agen<T>::nodo n){
   if(n != Agen<T>::NODO_NULO){
-    podar(A, A.hijoIzqdo(n));
-    A.eliminarHijoIzqdo(n);
-    podar(A, A.hermDrcho(n));
-    A.eliminarHermDrcho(n);
+    if (podar(A, A.hijoIzqdo(n)))
+      A.eliminarHijoIzqdo(n);
+    if (podar(A, A.hermDrcho(n)))
+      A.eliminarHermDrcho(n);
+    return true;
   }
+  else return false;
 }
 
 template <typename T>
 void podaArbol(Agen<T> &A, int x){
   typename Agen<T>::nodo n = busquedaNodo(A,A.raiz(), x);
-  podar(A, n);
+  bool a = podar(A, n);
 }
 
 
