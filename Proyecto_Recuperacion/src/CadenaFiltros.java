@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class CadenaFiltros {
 	
-	private ArrayList<filtroGenerico> Filtros;
+	private ArrayList<filtroGenerico> Filtros = new ArrayList<filtroGenerico>();
 	
 	public void add(filtroGenerico f){
 		Filtros.add(f);
