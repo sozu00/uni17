@@ -3,6 +3,13 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.util.*;
 
+import Filtros.CadenaFiltros;
+import Filtros.filtroMayusculas;
+import Filtros.filtroRegex;
+import Preprocesadores.CadenaPreprocesadores;
+import Preprocesadores.preprocesadorPalabrasVacias;
+import SeparacionPalabras.Divisor;
+
 public class Indexing {
 	
 	public void execute() throws IOException{

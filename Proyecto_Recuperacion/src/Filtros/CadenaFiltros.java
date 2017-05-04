@@ -1,3 +1,4 @@
+package Filtros;
 import java.util.ArrayList;
 
 public class CadenaFiltros {

@@ -1,3 +1,4 @@
+package Filtros;
 import java.util.regex.*;
 
 public class filtroRegex implements filtroGenerico {

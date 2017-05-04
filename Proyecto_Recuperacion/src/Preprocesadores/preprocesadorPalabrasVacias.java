@@ -1,9 +1,12 @@
+package Preprocesadores;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import AppPath;
 
 public class preprocesadorPalabrasVacias implements preprocesadorGenerico{
 	

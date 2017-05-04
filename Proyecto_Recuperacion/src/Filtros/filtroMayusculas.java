@@ -1,3 +1,4 @@
+package Filtros;
 
 public class filtroMayusculas implements filtroGenerico{
 
