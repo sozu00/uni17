@@ -6,7 +6,7 @@ import java.util.regex.*;
 
 public class Divisor {
 	
-	public ArrayList<String> extraerPalabras(String s){
+	public ArrayList<String> ejecutar(String s){
 		ArrayList<String> T =  new ArrayList<String>(Arrays.asList(s.split(" ")));
 		return T;
 	}
