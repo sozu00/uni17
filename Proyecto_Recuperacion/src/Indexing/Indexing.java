@@ -30,6 +30,7 @@ public class Indexing {
 		CdF.add(new filtroRegex("\\b[0-9]+\\b"));
 		CdF.add(new filtroRegex("-+ | -+"));
 		CdF.add(new filtroRegex(" +"));
+		CdF.add(new filtroRegex("^-+"));
 		
 		//Division de palabras
 		Divisor d = new Divisor();
