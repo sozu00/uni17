@@ -16,11 +16,9 @@ public class preprocesadorPalabrasVacias implements preprocesadorGenerico{
 		TreeSet<String> palabrasVacias = new 
 				TreeSet<String>(Arrays.asList(texto.split(" ")));
 		
-		for(String p : palabrasVacias){
-			while(vText.contains(p)){
+		for(String p : palabrasVacias)
+			while(vText.contains(p))
 			    vText.remove(p);
-		    }
-		}
 		
 		return vText;
 	}

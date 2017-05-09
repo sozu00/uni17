@@ -10,6 +10,8 @@ public class filtroRegex implements filtroGenerico {
 	public String ejecutar(String s) {
 		Pattern pat = Pattern.compile(expresion);
 		Matcher mat = pat.matcher(s);
+		if(s == "'") return mat.replaceAll("");
+		//Caso especial en inglés, el apostrofe no debe ser sustituido por un espacio, pues crea palabras erroneas
 	    return mat.replaceAll(" ");
 	}
 

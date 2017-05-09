@@ -25,6 +25,7 @@ public class Indexing {
 		
 		//Filtros
 		CdF.add(new filtroMayusculas());
+		CdF.add(new filtroRegex("'"));
 		CdF.add(new filtroRegex("[^-\\w]"));
 		CdF.add(new filtroRegex("\\b[0-9]+\\b"));
 		CdF.add(new filtroRegex("-+ | -+"));
@@ -34,6 +35,7 @@ public class Indexing {
 		Divisor d = new Divisor();
 
 		//Preprocesadores
+		
 		CdP.add(new preprocesadorPalabrasVacias());
 		CdP.add(new preprocesadorStemming());
 		preprocesadorLongitud.setLength(-2);

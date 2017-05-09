@@ -16,4 +16,6 @@
 <fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="preprocesadorPalabrasVacias"/>
+<fullyQualifiedTypeName name="java.util.TreeSet"/>
+<fullyQualifiedTypeName name="TFIDF.CalculoTFIDF"/>
 </qualifiedTypeNameHistroy>
