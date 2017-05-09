@@ -14,8 +14,7 @@ public class Indexing {
 	
 	public void execute() throws IOException{
 
-		File file = new File(AppPath.DATOSWindows);
-		double numFiles=0;
+		File file = new File(AppPath.DATA);
 		String texto = "";
 		ArrayList<String> vText;
 		ArrayList<String> vTextProcesado = new ArrayList<String>();
@@ -23,6 +22,7 @@ public class Indexing {
 		CadenaPreprocesadores CdP = new CadenaPreprocesadores();
 		HashMap<String, Double> textFrecuencia;
 		HashMap<String,tupla<Double, HashMap<File, Double>>> indiceInvertido = CalculoTFIDF.indiceInvertido;
+		
 		//Filtros
 		CdF.add(new filtroMayusculas());
 		CdF.add(new filtroRegex("[^-\\w]"));
@@ -59,22 +59,12 @@ public class Indexing {
 
 				//Calculo TF
 				textFrecuencia = TF.calcularTF1(vTextProcesado);
-				indiceInvertido = TF.calcularTF2(textFrecuencia,f);
-				numFiles++;
+				//indiceInvertido = TF.calcularTF2(textFrecuencia,f);
+				TF.calcularTF2(textFrecuencia,f);
 				}
 
-				TF.calcularIDF(indiceInvertido, numFiles);
-
-				for (String name : indiceInvertido.keySet()) {
-					String palabra = name.toString();
-					System.out.println(palabra+"\t - "+indiceInvertido.get(palabra).IDF());
-					for (File archivo : indiceInvertido.get(name).docPeso().keySet()) {
-						double value = indiceInvertido.get(name).docPeso().get(archivo);
-						System.out.println("\t" + value + "\t-\t" + archivo.getName());
-					}
-					System.out.println();
-				}
-
+				//TF.calcularIDF(indiceInvertido, numFiles);
+				TF.calcularIDF();
 	}
 	
 }

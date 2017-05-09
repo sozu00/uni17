@@ -18,7 +18,7 @@ public class App {
  
         try {
             // connect way #1
-            String url = "jdbc:mysql://localhost/banco";
+            String url = "jdbc:mysql://localhost:3306/banco";
             String user = "root";
             String password = "jig30592";
  
@@ -29,7 +29,7 @@ public class App {
                 System.out.println("Connected to the database banco");
             }
             
-            insertar();
+            //insertar();
           	transferir();
           	mostrar();
           	conn.close();

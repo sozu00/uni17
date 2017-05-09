@@ -1,0 +1,17 @@
+import java.io.File;
+
+import TFIDF.CalculoTFIDF;
+
+public class pruebaIndexing {
+	public static void probarIndexing(){
+		for (String name : CalculoTFIDF.indiceInvertido.keySet()) {
+			String palabra = name.toString();
+			System.out.println(palabra+"\t - "+CalculoTFIDF.indiceInvertido.get(palabra).IDF());
+			for (File archivo : CalculoTFIDF.indiceInvertido.get(name).docPeso().keySet()) {
+				double value = CalculoTFIDF.indiceInvertido.get(name).docPeso().get(archivo);
+				System.out.println("\t" + value + "\t-\t" + archivo.getName());
+			}
+			System.out.println();
+		}
+	}
+}

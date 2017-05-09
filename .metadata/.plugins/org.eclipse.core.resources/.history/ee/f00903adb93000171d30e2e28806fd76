@@ -1,0 +1,14 @@
+/*
+ * String ejecutar(String s)
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
+
+
+public interface filtroGenerico {
+
+	String ejecutar(String s);
+}

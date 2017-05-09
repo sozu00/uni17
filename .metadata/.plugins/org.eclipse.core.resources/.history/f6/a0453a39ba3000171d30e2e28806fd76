@@ -1,0 +1,4 @@
+
+public class filtroMayusculas implements filtroGenerico{
+
+}

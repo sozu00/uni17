@@ -1,0 +1,6 @@
+
+public class Divisor {
+	public ArrayList<String> dividir(String s){
+		
+	}
+}
