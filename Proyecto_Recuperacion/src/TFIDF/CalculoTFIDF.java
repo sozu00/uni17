@@ -40,19 +40,16 @@ public class CalculoTFIDF {
     }
 
     public void calcularTF2(HashMap<String, Double> textFrecuencia, File f){
-        double tf = 0;
+        double tf = 0; 	
         numFiles++;
         for (String palabra : textFrecuencia.keySet()) {
             tf = 1 + Math.log(textFrecuencia.get(palabra)) / Math.log(2);
-            if (indiceInvertido.containsKey(palabra)) {
-            	//Si el indice tiene la palabra ya creada
-                if (!indiceInvertido.get(palabra).docPeso().containsKey(f))
-                    indiceInvertido.get(palabra).docPeso().put(f, tf);
-                /*Y esta palabra no ha sido vista en el archivo F, se añade la entrada
-                	Si la palabra existe en el archivo significa que ya ha sido pesada previamente
-                	asi que no hacemos nada
-                */
-            }
+          
+            //Si el indice tiene la palabra ya creada
+            if (indiceInvertido.containsKey(palabra))
+                indiceInvertido.get(palabra).docPeso().put(f, tf);
+            //Añado la palabra P en el documento f                
+            
             else {
             	/*
             	 * En caso de no existir la palabra en el mapa, se crea un nuevo map para esa palabra
@@ -63,8 +60,6 @@ public class CalculoTFIDF {
                     indiceInvertido.put(palabra, new tupla(0,mapaArchivo));
             }
         }
-
-        //return indiceInvertido;
     }
 
     public void calcularIDF() {
@@ -73,6 +68,26 @@ public class CalculoTFIDF {
             		Math.log(numFiles/indiceInvertido.get(palabra).docPeso().size())/ Math.log(2));
             //Log2(numero de archivos / numero de archivos que contienen palabra)
         }
+    }
+    
+    public HashMap<File, Double> calcularLongitud(){
+    	HashMap<File, Double> Longitudes = new HashMap<File, Double>();
+    	double idf = 0;
+    	double TFIDF = 0;
+    	for(String palabra : indiceInvertido.keySet()){
+    		idf = indiceInvertido.get(palabra).IDF();
+    		for(File f : indiceInvertido.get(palabra).docPeso().keySet()){
+    			TFIDF = indiceInvertido.get(palabra).docPeso().get(f) * idf;
+    			if(Longitudes.containsKey(f))
+    				TFIDF += Longitudes.get(f);
+    			
+    			Longitudes.put(f, TFIDF);
+    		}
+    	}
+    	
+    	for(File f : Longitudes.keySet())
+    		Longitudes.put(f, Math.sqrt(Longitudes.get(f)));
+		return Longitudes;
     }
 }
 

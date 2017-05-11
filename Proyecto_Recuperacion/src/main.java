@@ -7,7 +7,7 @@ public class main {
 	public static void main(String[] args) throws IOException{
 		Indexing i = new Indexing();
 		i.execute();
-		pruebaIndexing.test();
+		//pruebaIndexing.test();
 	}
 	
 	
