@@ -1,0 +1,25 @@
+import java.util.regex.*;
+
+/*
+ * Esta clase obtiene un String de texto y lo limpia.
+ * 
+ * Sus métodos serán:
+ * 
+ * Limpiador(String t)
+ * Constructor que recibe un String que será un texto a limpiar
+ * 
+ * void Limpiar() 
+ * Limpia el texto
+ * 
+ * String texto() 
+ * Devuelve el texto, ya sea limpio o no. 
+ * 
+ * 
+ */
+
+
+
+
+public class Limpiador {
+	
+}

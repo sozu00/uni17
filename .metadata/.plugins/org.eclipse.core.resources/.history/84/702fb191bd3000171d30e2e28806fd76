@@ -1,0 +1,12 @@
+import java.util.ArrayList;
+import java.util.regex.*;
+
+
+public class Divisor {
+	public ArrayList<String> dividir(String s){
+		String [] terminos = Pattern.split(s);
+		ArrayList<String> T;
+		for(String x : terminos) T.add(x); 
+		return null;
+	}
+}

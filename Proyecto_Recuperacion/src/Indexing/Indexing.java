@@ -14,67 +14,42 @@ public class Indexing {
 	
 	public void execute() throws IOException{
 
-		File file = new File(AppPath.DATOSWindows);
-		double numFiles=0;
+		File file = new File(AppPath.DATA);
 		String texto = "";
 		ArrayList<String> vText;
 		ArrayList<String> vTextProcesado = new ArrayList<String>();
-		CadenaFiltros CdF = new CadenaFiltros();
-		CadenaPreprocesadores CdP = new CadenaPreprocesadores();
+		Filtrado F;
+		Preprocesado P;
+		Divisor D;
+		CalculoTFIDF TF = new CalculoTFIDF();
 		HashMap<String, Double> textFrecuencia;
 		HashMap<String,tupla<Double, HashMap<File, Double>>> indiceInvertido = CalculoTFIDF.indiceInvertido;
-		//Filtros
-		CdF.add(new filtroMayusculas());
-		CdF.add(new filtroRegex("[^-\\w]"));
-		CdF.add(new filtroRegex("\\b[0-9]+\\b"));
-		CdF.add(new filtroRegex("-+ | -+"));
-		CdF.add(new filtroRegex(" +"));
 		
-		//Division de palabras
-		Divisor d = new Divisor();
-
-		//Preprocesadores
-		CdP.add(new preprocesadorPalabrasVacias());
-		CdP.add(new preprocesadorStemming());
-		preprocesadorLongitud.setLength(-2);
-		CdP.add(new preprocesadorLongitud());
-
-		//TFIDF
-		CalculoTFIDF TF = new CalculoTFIDF();
 
 		if(file.isDirectory())
 			for (File f : file.listFiles()) {
-
+				
 				texto = new String(Files.readAllBytes(Paths.get(f.getPath())));
-
+				
 		    	//Filtrado
-				texto = CdF.ejecutar(texto);
+				F = new Filtrado(texto);
+				texto = F.execute();
 
 				//Division en Lista
-				vText = d.ejecutar(texto);
+				D =  new Divisor();
+				vText = D.ejecutar(texto);
 
 				//Preprocesado
-		    	vTextProcesado = CdP.ejecutar(vText);
-				//System.out.println(vTextProcesado.toString());
-
+				P = new Preprocesado(vText);
+		    	vTextProcesado = P.execute();
+				
 				//Calculo TF
 				textFrecuencia = TF.calcularTF1(vTextProcesado);
-				indiceInvertido = TF.calcularTF2(textFrecuencia,f);
-				numFiles++;
-				}
+				TF.calcularTF2(textFrecuencia,f);
+			}
 
-				TF.calcularIDF(indiceInvertido, numFiles);
-
-				for (String name : indiceInvertido.keySet()) {
-					String palabra = name.toString();
-					System.out.println(palabra+"\t - "+indiceInvertido.get(palabra).IDF());
-					for (File archivo : indiceInvertido.get(name).docPeso().keySet()) {
-						double value = indiceInvertido.get(name).docPeso().get(archivo);
-						System.out.println("\t" + value + "\t-\t" + archivo.getName());
-					}
-					System.out.println();
-				}
-
+			TF.calcularIDF();
+			System.out.println(indiceInvertido);
 	}
 	
 }

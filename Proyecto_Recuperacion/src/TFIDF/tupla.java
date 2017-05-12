@@ -10,4 +10,8 @@ public class tupla<S, T> {
         this.x = x;
         this.y = y;
     }
+    
+    public String toString(){
+    	return x + " - "+ y;
+    }
 }

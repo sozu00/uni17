@@ -1,0 +1,36 @@
+import java.io.File;
+import java.nio.file.*;
+import java.util.*;
+
+public class Indexing {
+	
+	public void execute(){
+		/*
+		 * TODO:
+		 * 	Main de Indexacion:
+		 * 		Leer archivos
+		 * 		Aplicar filtros
+		 * 		Separar palabras
+		 * 		Quitar vacías
+		 * 			 
+		 * 
+		 */
+		File[] files = new File(AppPath.DATA).listFiles(); 
+		String texto;
+		
+		CadenaFiltros CdF;
+		
+		CdF.add(new filtroMayusculas());
+		CdF.add(new filtroPuntuacion());
+		
+		for (File file : files) {
+		    if (file.isFile()) {
+		    	texto = new String(Files.readAllBytes(file.getPath()));
+		    }
+		}
+		List<String> vText = new ArrayList<String>();
+		
+		
+	}
+	
+}

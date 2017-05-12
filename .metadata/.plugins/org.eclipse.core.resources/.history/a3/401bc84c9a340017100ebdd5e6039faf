@@ -1,0 +1,15 @@
+import java.io.File;
+
+public class pruebaIndexing {
+	public probarIndexing(){
+		for (String name : CalculoTFID.indiceInvertido.keySet()) {
+			String palabra = name.toString();
+			System.out.println(palabra+"\t - "+CalculoTFID.indiceInvertido.get(palabra).IDF());
+			for (File archivo : CalculoTFID.indiceInvertido.get(name).docPeso().keySet()) {
+				double value = CalculoTFID.indiceInvertido.get(name).docPeso().get(archivo);
+				System.out.println("\t" + value + "\t-\t" + archivo.getName());
+			}
+			System.out.println();
+		}
+	}
+}

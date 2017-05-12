@@ -8,11 +8,14 @@ tCoste DistMax(const matriz<tCoste>& m, typename GrafoP<tCoste>::vertice v){
   typedef typename GrafoP<tCoste>::vertice vertice;
   tCoste maximo, maximo2;
   maximo=0;
-  for(int i=0; i<m.dimension(); i++)
-    if(m[i][v]>maximo){
-      maximo2=maximo;
+  for(int i=0; i<m.dimension(); i++){
+    if(m[i][v]>maximo)
       maximo=m[i][v];
-    }
+      
+    else
+      if(m[i][v] > maximo2)
+        maximo2 = m[i][v];
+  }
   return maximo+maximo2;
 }
 
@@ -89,8 +92,8 @@ matriz<tCoste> Zuelandia(const GrafoP<tCoste>& G, vector<typename GrafoP<tCoste>
 matriz<int> Dijkstra(
   const Grafo& G,
   typename Grafo::vertice origen,
-  vector<typename Grafo::vertice>& P){
-
+  vector<typename Grafo::vertice>& P)
+  {
     typedef typename Grafo::vertice vertice;
     vertice v, w;
     const size_t n = G.numVert();
@@ -120,7 +123,7 @@ matriz<int> Dijkstra(
        // Recalcular coste hasta cada v no incluido en S a través de w.
        for (v = 0; v < n; v++)
           if (!S[v]) {
-            int 0wv = (m[w][v]) ? D[w] + distancia(w,v) : INT_MAX;
+            int 0wv = (m[w][v]) ? D[w]+1 : INT_MAX;
             if (Owv < D[v]) {
               D[v] = Owv;
               P[v] = w;
@@ -130,6 +133,7 @@ matriz<int> Dijkstra(
     return D;
 
 }
+
 int main(){
   std::cout << "HOLIS MUNDIS" << std::endl;
 }

@@ -1,0 +1,11 @@
+import java.nio.file.*;
+
+public class Indexing {
+	
+	public void execute(){
+		
+		
+		return new String(Files.readAllBytes(Paths.get(rutaFichero)));
+	}
+	
+}

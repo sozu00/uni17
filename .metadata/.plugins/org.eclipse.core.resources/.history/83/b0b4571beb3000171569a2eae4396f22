@@ -1,0 +1,6 @@
+
+public class EliminadorVacias {
+	public void eliminarVacias(ArrayList<String> vText){
+		
+	}
+}

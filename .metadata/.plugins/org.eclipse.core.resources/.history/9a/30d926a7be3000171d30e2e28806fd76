@@ -1,0 +1,15 @@
+import java.util.ArrayList;
+import java.util.regex.*;
+
+
+public class Divisor {
+	private ArrayList<String> t;
+
+	public ArrayList<String> extraerPalabras(String s){
+		Pattern p = Pattern.compile(" ");
+		String [] terminos = p.split(s);
+		t = null;
+		for(String x : terminos) t.add(x); 
+		return t;
+	}
+}

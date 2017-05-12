@@ -3,14 +3,16 @@ import java.util.regex.*;
 
 public class filtroRegex implements filtroGenerico {
 	
-	private String expresion;
-	public filtroRegex(String s){
-		expresion = s;
+	private final String expresion;
+	private final String sustituto;
+	public filtroRegex(String e, String s){
+		expresion = e;
+		sustituto = s;
 	}
 	public String ejecutar(String s) {
 		Pattern pat = Pattern.compile(expresion);
 		Matcher mat = pat.matcher(s);
-	    return mat.replaceAll(" ");
+	    return mat.replaceAll(sustituto);
 	}
 
 }
