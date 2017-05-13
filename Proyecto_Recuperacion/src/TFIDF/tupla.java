@@ -1,17 +1,17 @@
 package TFIDF;
 
 public class tupla<S, T> {
-    public S x;
-    public T y;
-    public void setIDF(S x){this.x = x;}
-    public S IDF(){return x;}
-    public T docPeso(){return y;}
-    public tupla(S x, T y) {
-        this.x = x;
-        this.y = y;
+    public S idf;
+    public T docPeso;
+    public void setIDF(S idf){this.idf = idf;}
+    public S IDF(){return idf;}
+    public T docPeso(){return docPeso;}
+    public tupla(S idf, T docPeso) {
+        this.idf = idf;
+        this.docPeso = docPeso;
     }
     
     public String toString(){
-    	return x + " - "+ y;
+    	return idf + "@@"+ docPeso;
     }
 }

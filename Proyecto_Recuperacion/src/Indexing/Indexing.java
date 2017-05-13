@@ -2,6 +2,7 @@ package Indexing;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.*;
 import java.util.*;
 
@@ -49,7 +50,16 @@ public class Indexing {
 			}
 
 			TF.calcularIDF();
-			System.out.println(indiceInvertido);
+			try{ 
+				PrintWriter indInv = new PrintWriter(AppPath.RES+"indiceInvertido");
+				PrintWriter longD = new PrintWriter(AppPath.RES+"longDocumentos");
+				
+				longD.write(TF.calcularLongitud().toString());
+			    indInv.write(indiceInvertido.toString());
+			    longD.flush();
+			    indInv.flush();
+			} catch(Exception e){}
+			
 	}
 	
 }
