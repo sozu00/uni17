@@ -1,0 +1,9 @@
+import java.util.ArrayList;
+import java.util.regex.*;
+
+
+public class Divisor {
+	public ArrayList<String> extraerPalabras(String s){
+		return new ArrayList<String>(s.split(""));
+	}
+}

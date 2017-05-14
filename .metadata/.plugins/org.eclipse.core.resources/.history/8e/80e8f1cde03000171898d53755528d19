@@ -1,0 +1,4 @@
+
+public class AppPath {
+	public static String DATA = "/home/sozu00/REC-INF/uni17/Proyecto_Recuperacion/data";
+}

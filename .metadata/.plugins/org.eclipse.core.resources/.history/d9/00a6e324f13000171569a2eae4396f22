@@ -1,0 +1,10 @@
+
+public class filtroEspacios implements filtroGenerico {
+
+	@Override
+	public String ejecutar(String s) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
