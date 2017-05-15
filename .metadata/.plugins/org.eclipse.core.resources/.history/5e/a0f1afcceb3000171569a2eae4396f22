@@ -1,7 +1,0 @@
-import java.util.ArrayList;
-
-public class EliminadorVacias {
-	public ArrayList<String> eliminarVacias(ArrayList<String> vText){
-		return vText;
-	}
-}

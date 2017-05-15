@@ -1,4 +1,0 @@
-
-public class AppPath {
-	public String DATA = "/home/sozu00/REC-INF/uni17/Proyecto_Recuperacion/data";
-}
