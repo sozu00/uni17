@@ -1,0 +1,55 @@
+select fecha_inicio
+from proyecto, Universidad, grupo
+where idProyecto = proyecto_asignado AND idUniversidad = universidad AND nombreUniversidad = "UCA";
+
+
+select fecha_inicio
+from proyecto
+where idProyecto in (
+	select proyecto_asignado
+	from grupo
+	where universidad in (
+		select idUniversidad
+		from Universidad
+		where nombreUniversidad = "UCA"		
+		)
+	)
+;
+
+-----------------------------------------------------------------------------------------------------
+
+select nombreEspanol
+from Grupo, Miembro
+where grupo = TIC AND idMiembro = 10;
+
+select nombreEspanol
+from Grupo
+where TIC = (
+	select grupo
+	from Miembro
+	where idMiembro = 10
+	)
+;
+
+-----------------------------------------------------------------------------------------------------
+
+select proyecto.*
+from Proyecto, Grupo, Departamento, Universidad
+where idProyecto = proyecto_asignado AND idUniversidad = Grupo.universidad AND Departamento.universidad = IdUniversidad AND nombreDepartamento = "Departamento de Ingeniería del Software";
+
+select *
+from proyecto
+where idProyecto in (
+	select proyecto_asignado
+	from Grupo
+	where universidad in (
+		select idUniversidad
+		from Universidad
+		where idUniversidad in (
+			select universidad
+			from Departamento
+			where nombreDepartamento = "Departamento de Ingeniería del Software"	
+			)
+		)
+	)
+;
