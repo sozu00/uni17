@@ -23,4 +23,20 @@
 <fullyQualifiedTypeName name="Recuperation.Recuperation"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="Filtros.filtroGenerico"/>
+<fullyQualifiedTypeName name="org.apache.lucene.document.Field.Store"/>
+<fullyQualifiedTypeName name="org.apache.lucene.document.FieldType"/>
+<fullyQualifiedTypeName name="com.sun.xml.internal.txw2.Document"/>
+<fullyQualifiedTypeName name="org.apache.lucene.document.Document"/>
+<fullyQualifiedTypeName name="java.nio.charset.StandardCharsets"/>
+<fullyQualifiedTypeName name="org.apache.lucene.index.IndexReader"/>
+<fullyQualifiedTypeName name="org.apache.lucene.store.Directory"/>
+<fullyQualifiedTypeName name="org.apache.lucene.index.DirectoryReader"/>
+<fullyQualifiedTypeName name="org.apache.lucene.search.IndexSearcher"/>
+<fullyQualifiedTypeName name="javax.management.Query"/>
+<fullyQualifiedTypeName name="org.apache.lucene.search.Query"/>
+<fullyQualifiedTypeName name="org.apache.lucene.queryparser.classic.QueryParser"/>
+<fullyQualifiedTypeName name="org.apache.lucene.search.TopDocs"/>
+<fullyQualifiedTypeName name="org.apache.lucene.search.highlight.SimpleHTMLFormatter"/>
+<fullyQualifiedTypeName name="org.apache.lucene.search.highlight.Highlighter"/>
+<fullyQualifiedTypeName name="org.apache.lucene.search.highlight.QueryScorer"/>
 </qualifiedTypeNameHistroy>

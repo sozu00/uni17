@@ -74,10 +74,15 @@ public class CalculoTFIDF {
     	HashMap<File, Double> Longitudes = new HashMap<File, Double>();
     	double idf = 0;
     	double TFIDF = 0;
+    	
     	for(String palabra : indiceInvertido.keySet()){
+    		
     		idf = indiceInvertido.get(palabra).IDF();
+    		
     		for(File f : indiceInvertido.get(palabra).docPeso().keySet()){
+    			
     			TFIDF = indiceInvertido.get(palabra).docPeso().get(f) * idf;
+    			
     			if(Longitudes.containsKey(f))
     				TFIDF += Longitudes.get(f);
     			

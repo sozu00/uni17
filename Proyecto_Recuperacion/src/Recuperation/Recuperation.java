@@ -59,6 +59,7 @@ public class Recuperation {
 		readIndice();
 		readlongitud();
 	}
+	
 	private void readlongitud() throws IOException{
 		String LD = new String(Files.readAllBytes(Paths.get(AppPath.RES+"longDocumentos")));
 		longDoc = new HashMap<File, Double>();
