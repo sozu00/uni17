@@ -13,8 +13,8 @@ public class Indexing {
 	
 	public void execute() throws IOException{
 
-		File file = new File(AppPath.DATAWindows);
-		String texto = "";
+		File file = new File(AppPath.Data_Chosen);
+		String texto;
 		ArrayList<String> vText;
 		ArrayList<String> vTextProcesado = new ArrayList<String>();
 		Filtrado F;
@@ -23,13 +23,13 @@ public class Indexing {
 		CalculoTFIDF TF = new CalculoTFIDF();
 		HashMap<String, Double> textFrecuencia;
 		HashMap<String,tupla<Double, HashMap<File, Double>>> indiceInvertido = CalculoTFIDF.indiceInvertido;
-		
+		System.out.println("Aplicando filtros a documentos...");
 
 		if(file.isDirectory())
 			for (File f : file.listFiles()) {
 				
 				texto = new String(Files.readAllBytes(Paths.get(f.getPath())));
-				
+
 		    	//Filtrado
 				F = new Filtrado(texto);
 				texto = F.execute();
