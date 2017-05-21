@@ -1,8 +1,6 @@
 package Indexing;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.nio.file.*;
 import java.util.*;
 
@@ -15,7 +13,7 @@ public class Indexing {
 	
 	public void execute() throws IOException{
 
-		File file = new File(AppPath.DATA);
+		File file = new File(AppPath.DATAWindows);
 		String texto = "";
 		ArrayList<String> vText;
 		ArrayList<String> vTextProcesado = new ArrayList<String>();
@@ -51,13 +49,12 @@ public class Indexing {
 
 			TF.calcularIDF();
 			try{ 
-				PrintWriter indInv = new PrintWriter(AppPath.RES+"indiceInvertido");
-				PrintWriter longD = new PrintWriter(AppPath.RES+"longDocumentos");
-				
+				PrintWriter indInv = new PrintWriter(AppPath.RESWindows+"indiceInvertido");
+				PrintWriter longD = new PrintWriter(AppPath.RESWindows+"longDocumentos");
 				longD.write(TF.calcularLongitud().toString());
 			    indInv.write(indiceInvertido.toString());
-			    longD.flush();
-			    indInv.flush();
+			    longD.close();
+			    indInv.close();
 			} catch(Exception e){}
 			
 	}

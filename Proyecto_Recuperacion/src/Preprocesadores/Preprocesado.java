@@ -14,10 +14,10 @@ public class Preprocesado {
 	
 	public ArrayList<String> execute() throws IOException{
 		CadenaPreprocesadores CdP = new CadenaPreprocesadores();
-		CdP.add(new preprocesadorPalabrasVacias());
-		CdP.add(new preprocesadorStemming());
-		preprocesadorLongitud.setLength(-2);
-		CdP.add(new preprocesadorLongitud());
+		//CdP.add(new preprocesadorPalabrasVacias());
+		//CdP.add(new preprocesadorStemming());
+		preprocesadorLongitud.setLength(0);
+		//CdP.add(new preprocesadorLongitud());
 		return CdP.ejecutar(vText);
 	}
 }

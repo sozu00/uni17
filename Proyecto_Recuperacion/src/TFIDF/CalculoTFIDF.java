@@ -40,7 +40,7 @@ public class CalculoTFIDF {
     }
 
     public void calcularTF2(HashMap<String, Double> textFrecuencia, File f){
-        double tf = 0; 	
+        double tf;
         numFiles++;
         for (String palabra : textFrecuencia.keySet()) {
             tf = 1 + Math.log(textFrecuencia.get(palabra)) / Math.log(2);
@@ -72,20 +72,20 @@ public class CalculoTFIDF {
     
     public HashMap<File, Double> calcularLongitud(){
     	HashMap<File, Double> Longitudes = new HashMap<File, Double>();
-    	double idf = 0;
-    	double TFIDF = 0;
+    	double idf;
+    	double TFIDF;
     	
     	for(String palabra : indiceInvertido.keySet()){
-    		
+
     		idf = indiceInvertido.get(palabra).IDF();
-    		
+
     		for(File f : indiceInvertido.get(palabra).docPeso().keySet()){
     			
-    			TFIDF = indiceInvertido.get(palabra).docPeso().get(f) * idf;
-    			
+    			TFIDF = Math.pow(indiceInvertido.get(palabra).docPeso.get(f) * idf, 2);
+
     			if(Longitudes.containsKey(f))
     				TFIDF += Longitudes.get(f);
-    			
+
     			Longitudes.put(f, TFIDF);
     		}
     	}
