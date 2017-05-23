@@ -20,7 +20,7 @@ public class Formateador {
         ListaDocs = OrdenacionDoc.ListaDocs;
     }
 
-    public void Resultado(){
+    public void showResults(){
         try{
             for(Map.Entry<File, Double> FD : ListaDocs){
                 System.out.println("Document ID: "+FD.getKey().getName() + "\t\t(weight: "+FD.getValue()+")");

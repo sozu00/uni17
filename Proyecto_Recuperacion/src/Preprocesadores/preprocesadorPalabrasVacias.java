@@ -11,8 +11,10 @@ import Indexing.AppPath;
 public class preprocesadorPalabrasVacias implements preprocesadorGenerico{
 	
 
-	public ArrayList<String> ejecutar(ArrayList<String> vText) throws IOException{
+	public ArrayList<String> execute(ArrayList<String> vText) throws IOException{
+		
 		String texto = new String(Files.readAllBytes(Paths.get(AppPath.Empty)));
+		
 		TreeSet<String> palabrasVacias = new 
 				TreeSet<String>(Arrays.asList(texto.split(" ")));
 		

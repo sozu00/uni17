@@ -28,7 +28,7 @@ public class Recuperation {
 
 		//Division en Lista
 		D =  new Divisor();
-		vText = D.ejecutar(terminos);
+		vText = D.execute(terminos);
 
 		//Preprocesado
 		P = new Preprocesado(vText);
@@ -36,8 +36,8 @@ public class Recuperation {
 
     	L.readDocs();
 
-		oD.crearLista();
-		oD.mostrarLista();
+		oD.createList();
+		oD.showList();
 	}
 
 	public void read(String[] args){

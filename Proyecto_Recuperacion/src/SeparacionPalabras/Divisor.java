@@ -6,8 +6,7 @@ import java.util.regex.*;
 
 public class Divisor {
 	
-	public ArrayList<String> ejecutar(String s){
-		ArrayList<String> T =  new ArrayList<String>(Arrays.asList(s.split(" ")));
-		return T;
+	public ArrayList<String> execute(String s){
+		return new ArrayList<String>(Arrays.asList(s.split(" ")));
 	}
 }

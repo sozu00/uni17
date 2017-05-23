@@ -10,7 +10,7 @@ public class preprocesadorLongitud implements preprocesadorGenerico {
     public static void setLength(int n){L = n;}
 
 
-    public ArrayList<String> ejecutar(ArrayList<String> vText) throws IOException {
+    public ArrayList<String> execute(ArrayList<String> vText) throws IOException {
         Iterator<String> s = vText.iterator();
         while(s.hasNext())
         	if (s.next().length() <= L)

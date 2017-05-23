@@ -36,7 +36,7 @@ public class Indexing {
 
 				//Division en Lista
 				D =  new Divisor();
-				vText = D.ejecutar(texto);
+				vText = D.execute(texto);
 
 				//Preprocesado
 				P = new Preprocesado(vText);
@@ -47,13 +47,15 @@ public class Indexing {
 				TF.calcularTF2(textFrecuencia,f);
 				
 			}
-		System.out.println("Indice Invertido OK, escribiendo en archivo...");
+
 			TF.calcularIDF();
 			try{ 
 				PrintWriter indInv = new PrintWriter(AppPath.RES+"indiceInvertido");
 				PrintWriter longD = new PrintWriter(AppPath.RES+"longDocumentos");
+				
 				longD.write(TF.calcularLongitud().toString());
 			    indInv.write(indiceInvertido.toString());
+			    
 			    longD.close();
 			    indInv.close();
 			} catch(Exception e){}

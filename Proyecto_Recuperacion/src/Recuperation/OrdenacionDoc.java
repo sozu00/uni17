@@ -13,18 +13,19 @@ public class OrdenacionDoc {
     public static HashMap<File, Double> Documentos = new HashMap<>();
     public static List<Map.Entry<File, Double>> ListaDocs;
 
-    public void crearLista() {
+    public void createList() {
         /*
-        To Do:
-            Recorrer todo el indice invertido buscando:
-                Palabra P
-                   Documentos de palabra P, si D esta en Documentos, le sumo TF*IDF*IDF, sino lo anado
+        Recorrer todo el indice invertido buscando:
+            -Palabra P
+               -*Documentos de palabra P, calculo TF*IDF*IDF, si D esta en Documentos, 
+               		-**SI: 		se lo sumo al actual
+               		-**SI_NO: 	añado el valor nuevo
          */
         double valorAColocar;
         for(String P : Recuperation.vTextProcesado) {
             if(Lector.indiceInvertido.containsKey(P)){
                 for (File D : Lector.indiceInvertido.get(P).docPeso().keySet()) {
-                    valorAColocar = (Lector.indiceInvertido.get(P).docPeso.get(D) * Lector.indiceInvertido.get(P).IDF() * Lector.indiceInvertido.get(P).IDF());
+                    valorAColocar = (Lector.indiceInvertido.get(P).docPeso.get(D) * Lector.indiceInvertido.get(P).getIDF() * Lector.indiceInvertido.get(P).getIDF());
                     if (Documentos.containsKey(D)) valorAColocar += Documentos.get(D);
                     Documentos.put(D, valorAColocar);
                 }
@@ -37,7 +38,8 @@ public class OrdenacionDoc {
         }
     }
 
-    public void mostrarLista() {
+    public void showList() {
+    	//Creo un comparador para que los ordene de forma DESCENDENTE
         Comparator<Map.Entry<File, Double>> CompDocs = new Comparator<Map.Entry<File, Double>>() {
             @Override
             public int compare(Map.Entry<File, Double> e1, Map.Entry<File, Double> e2) {
@@ -46,7 +48,9 @@ public class OrdenacionDoc {
                 return v2.compareTo(v1);
             }
         };
+        
         ListaDocs = new ArrayList<>(Documentos.entrySet());
+        
         Collections.sort(ListaDocs, CompDocs);
     }
 }

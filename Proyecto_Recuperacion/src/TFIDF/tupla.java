@@ -3,8 +3,10 @@ package TFIDF;
 public class tupla<S, T> {
     public S idf;
     public T docPeso;
+    
     public void setIDF(S idf){this.idf = idf;}
-    public S IDF(){return idf;}
+    
+    public S getIDF(){return idf;}
     public T docPeso(){return docPeso;}
     public tupla(S idf, T docPeso) {
         this.idf = idf;

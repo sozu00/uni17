@@ -25,8 +25,10 @@ public class CalculoTFIDF {
         HashMap<String,Double> mapaOcurrencias = new HashMap<String,Double>();
         double ocurrenciasP = 0;
         /*
-         * Para cada palabra del texto, si el mapa de ocurrencias la contiene ya la ocurrencia incremente 1
-         * En caso de que no la contenga, creo 
+         * Para cada palabra del texto, 
+         * 	si el mapa de ocurrencias la contiene ya la ocurrencia 
+         * 		-*SI: 		Incremento 1
+         * 		-*SI_NO: 	Añado una nueva 
          */
         for (String p : vText){
             if (mapaOcurrencias.containsKey(p))
@@ -40,24 +42,28 @@ public class CalculoTFIDF {
     }
 
     public void calcularTF2(HashMap<String, Double> textFrecuencia, File f){
-        double tf;
+        
+    	double tf;
         numFiles++;
+        
+        /*
+         * Para cada palabra P del texto
+         * 	-Calculo el TF de P en el documento F
+         * 	-Si el indice tiene la palabra ya
+         * 		-*SI:		Añado la palabra P al documento F
+         * 		-*SI_NO: 	Creo un nuevo Map para P con el documento F
+         */		
+        
         for (String palabra : textFrecuencia.keySet()) {
             tf = 1 + Math.log(textFrecuencia.get(palabra)) / Math.log(2);
-          
-            //Si el indice tiene la palabra ya creada
+
             if (indiceInvertido.containsKey(palabra))
                 indiceInvertido.get(palabra).docPeso().put(f, tf);
-            //Añado la palabra P en el documento f                
-            
+           
             else {
-            	/*
-            	 * En caso de no existir la palabra en el mapa, se crea un nuevo map para esa palabra
-            	 * en el archivo F y se añade con IDF = 0
-            	 */
-                    HashMap<File, Double> mapaArchivo = new HashMap<File, Double>();
-                    mapaArchivo.put(f, tf);
-                    indiceInvertido.put(palabra, new tupla(0,mapaArchivo));
+                HashMap<File, Double> mapaArchivo = new HashMap<File, Double>();
+                mapaArchivo.put(f, tf);
+                indiceInvertido.put(palabra, new tupla(0,mapaArchivo));
             }
         }
     }
@@ -75,13 +81,22 @@ public class CalculoTFIDF {
     	double idf;
     	double TFIDF;
     	
-    	for(String palabra : indiceInvertido.keySet()){
+    	/*
+         * Para cada palabra P del indice Invertido
+         * 	-Obtengo el IDF de P
+         * 	-Para cada archivo F que contiene la palbra P
+         * 		-*Multiplico su TF por el IDF previo y elevo el resultado al cuadrado	
+         * 		-Si el mapa de longitudes tiene el archivo F ya añadido
+         * 			-*SI:		Sumo el TFIDF nuevo al documento F
+         * 		-Inserto en el archivo F el nuevo TFIDF (La suma con el actual o uno nuevo en caso de no existir)
+         */	
+    	for(String P : indiceInvertido.keySet()){
 
-    		idf = indiceInvertido.get(palabra).IDF();
+    		idf = indiceInvertido.get(P).getIDF();
 
-    		for(File f : indiceInvertido.get(palabra).docPeso().keySet()){
+    		for(File f : indiceInvertido.get(P).docPeso().keySet()){
     			
-    			TFIDF = Math.pow(indiceInvertido.get(palabra).docPeso.get(f) * idf, 2);
+    			TFIDF = Math.pow(indiceInvertido.get(P).docPeso.get(f) * idf, 2);
 
     			if(Longitudes.containsKey(f))
     				TFIDF += Longitudes.get(f);
@@ -90,6 +105,7 @@ public class CalculoTFIDF {
     		}
     	}
     	
+    	//Al finalizar hay que hacerle la raiz a los sumatorios hechos anteriormente
     	for(File f : Longitudes.keySet())
     		Longitudes.put(f, Math.sqrt(Longitudes.get(f)));
 		return Longitudes;

@@ -16,8 +16,7 @@ public class Preprocesado {
 		CadenaPreprocesadores CdP = new CadenaPreprocesadores();
 		CdP.add(new preprocesadorPalabrasVacias());
 		CdP.add(new preprocesadorStemming());
-
 		CdP.add(new preprocesadorLongitud());
-		return CdP.ejecutar(vText);
+		return CdP.execute(vText);
 	}
 }

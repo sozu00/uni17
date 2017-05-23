@@ -9,10 +9,10 @@ public class CadenaPreprocesadores {
 		preprocesadores.add(p);
 	}
 	
-	public ArrayList<String> ejecutar(ArrayList<String> s) throws IOException{
+	public ArrayList<String> execute(ArrayList<String> s) throws IOException{
 		ArrayList<String> t = s;
 		for(preprocesadorGenerico P : preprocesadores)
-			t = P.ejecutar(t);
+			t = P.execute(t);
 		return t;
 	}
 }
