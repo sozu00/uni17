@@ -31,7 +31,7 @@ public class Lector {
     }
 
     private void readlongitud() throws IOException {
-        String LD = new String(Files.readAllBytes(Paths.get(AppPath.RESWindows + "longDocumentos")));
+        String LD = new String(Files.readAllBytes(Paths.get(AppPath.RES + "longDocumentos")));
         longDoc = new HashMap<File, Double>();
         LD = CdF.ejecutar(LD);
         ArrayList<String> longitudT = new ArrayList<String>(Arrays.asList(LD.split(",")));
@@ -43,7 +43,7 @@ public class Lector {
     }
 
     private void readIndice() throws IOException{
-        String indInv = new String(Files.readAllBytes(Paths.get(AppPath.RESWindows+"indiceInvertido")));
+        String indInv = new String(Files.readAllBytes(Paths.get(AppPath.RES+"indiceInvertido")));
         indiceInvertido = new HashMap<String, tupla<Double, HashMap<File, Double>>>();
         indInv = CdF.ejecutar(indInv);
 

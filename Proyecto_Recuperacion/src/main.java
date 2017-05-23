@@ -11,7 +11,7 @@ public class main {
 	public static void main(String[] args) throws IOException{
 		System.out.println("Inserte consulta: ");
 		Scanner scan = new Scanner(System.in);
-		AppPath.setData(AppPath.CorpusWindows);
+		AppPath.setData(0);
 		String text = scan.nextLine();
 		Indexing i = new Indexing();
 

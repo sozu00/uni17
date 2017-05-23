@@ -12,7 +12,7 @@ public class preprocesadorPalabrasVacias implements preprocesadorGenerico{
 	
 
 	public ArrayList<String> ejecutar(ArrayList<String> vText) throws IOException{
-		String texto = new String(Files.readAllBytes(Paths.get(AppPath.EmptyWindows)));
+		String texto = new String(Files.readAllBytes(Paths.get(AppPath.Empty)));
 		TreeSet<String> palabrasVacias = new 
 				TreeSet<String>(Arrays.asList(texto.split(" ")));
 		

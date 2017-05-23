@@ -13,7 +13,7 @@ public class Indexing {
 	
 	public void execute() throws IOException{
 
-		File file = new File(AppPath.Data_Chosen);
+		File file = new File(AppPath.Corpus);
 		String texto;
 		ArrayList<String> vText;
 		ArrayList<String> vTextProcesado = new ArrayList<String>();
@@ -45,12 +45,13 @@ public class Indexing {
 				//Calculo TF
 				textFrecuencia = TF.calcularTF1(vTextProcesado);
 				TF.calcularTF2(textFrecuencia,f);
+				
 			}
-
+		System.out.println("Indice Invertido OK, escribiendo en archivo...");
 			TF.calcularIDF();
 			try{ 
-				PrintWriter indInv = new PrintWriter(AppPath.RESWindows+"indiceInvertido");
-				PrintWriter longD = new PrintWriter(AppPath.RESWindows+"longDocumentos");
+				PrintWriter indInv = new PrintWriter(AppPath.RES+"indiceInvertido");
+				PrintWriter longD = new PrintWriter(AppPath.RES+"longDocumentos");
 				longD.write(TF.calcularLongitud().toString());
 			    indInv.write(indiceInvertido.toString());
 			    longD.close();
