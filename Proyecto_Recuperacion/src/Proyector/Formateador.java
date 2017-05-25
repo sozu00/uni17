@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Scanner;
 
-import Indexing.AppPath;
 import Indexing.Indexing;
 import Preprocesadores.preprocesadorLongitud;
 import Recuperation.OrdenacionDoc;
@@ -35,9 +34,9 @@ public class Formateador {
     }
     
     public void showMenu() throws IOException{
-    	scan = new Scanner(System.in);
     	
-    	AppPath.setData(1);
+    	scan = new Scanner(System.in);
+
     	do{
     		System.out.println("Seleccione qué desea hacer:\n1)Indexación\n2)Recuperación\n3)Salir");
     		choice = Integer.valueOf(scan.nextLine());
