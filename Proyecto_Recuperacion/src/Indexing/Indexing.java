@@ -13,7 +13,7 @@ public class Indexing {
 	
 	public void execute() throws IOException{
 
-		File file = new File(AppPath.Corpus);
+		File file = new File(AppPath.DATA);
 		String texto;
 		ArrayList<String> vText;
 		ArrayList<String> vTextProcesado = new ArrayList<String>();
