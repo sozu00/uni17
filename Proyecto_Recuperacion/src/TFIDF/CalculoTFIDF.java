@@ -13,13 +13,6 @@ public class CalculoTFIDF {
      * Asi que en vez de copiarlo en cada archivo, simplemente lo creo como
      * estático
 	*/
-	private static double numFiles = 0;
-	/*
-	 * Guardo esta variable auxiliar para averiguar el 
-	 * numero de archivos mirados para el calculo del IDF.
-	 * 
-	 * Se incrementará hasta N durante el calculo del TF2
-	 */
 	
 	public HashMap<String,Double> calcularTF1(ArrayList<String> vText){
         HashMap<String,Double> mapaOcurrencias = new HashMap<String,Double>();
@@ -44,7 +37,6 @@ public class CalculoTFIDF {
     public void calcularTF2(HashMap<String, Double> textFrecuencia, File f){
         
     	double tf;
-        numFiles++;
         
         /*
          * Para cada palabra P del texto
@@ -63,7 +55,7 @@ public class CalculoTFIDF {
             else {
                 HashMap<File, Double> mapaArchivo = new HashMap<File, Double>();
                 mapaArchivo.put(f, tf);
-                indiceInvertido.put(palabra, new tupla(0,mapaArchivo));
+                indiceInvertido.put(palabra, new tupla<Double, HashMap<File,Double>>(0.0,mapaArchivo));
             }
         }
     }
@@ -71,7 +63,7 @@ public class CalculoTFIDF {
     public void calcularIDF() {
         for(String palabra : indiceInvertido.keySet()){
             indiceInvertido.get(palabra).setIDF(
-            		Math.log(numFiles/indiceInvertido.get(palabra).docPeso().size())/ Math.log(2));
+            		Math.log(Indexing.Indexing.numFiles/indiceInvertido.get(palabra).docPeso().size())/ Math.log(2));
             //Log2(numero de archivos / numero de archivos que contienen palabra)
         }
     }

@@ -1,12 +1,6 @@
 package Filtros;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
-import Preprocesadores.CadenaPreprocesadores;
-import Preprocesadores.preprocesadorLongitud;
-import Preprocesadores.preprocesadorPalabrasVacias;
-import Preprocesadores.preprocesadorStemming;
 
 public class Filtrado {
 	String texto;

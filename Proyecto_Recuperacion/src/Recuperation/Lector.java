@@ -89,7 +89,7 @@ public class Lector {
             ArrayList<String> fileTF = new ArrayList<String>(Arrays.asList(L.get(1).split(",")));
 
             double idf = Double.parseDouble(palIDF.get(1));
-            indiceInvertido.put(palIDF.get(0), new tupla(idf, new HashMap<File, Double>()));
+            indiceInvertido.put(palIDF.get(0), new tupla<Double, HashMap<File, Double>>(idf, new HashMap<File, Double>()));
 
             for(String fTF : fileTF){
                 ArrayList<String> archivoTF = new ArrayList<String>(Arrays.asList(fTF.split("=")));

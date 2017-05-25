@@ -1,20 +1,17 @@
 package Proyector;
 
-import Recuperation.OrdenacionDoc;
-import Recuperation.Recuperation;
-
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 import Indexing.AppPath;
 import Indexing.Indexing;
 import Preprocesadores.preprocesadorLongitud;
+import Recuperation.OrdenacionDoc;
+import Recuperation.Recuperation;
 
 /**
  * Created by sozu on 21/05/2017.
@@ -24,9 +21,11 @@ public class Formateador {
     int choice;
     String consulta;
     
-    public void showResults(){
+    @SuppressWarnings("resource")
+	public void showResults(){
         try{
-            for(Map.Entry<File, Double> FD : OrdenacionDoc.ListaDocs){
+            for(int i=0; i<10; i++){
+            	Map.Entry<File, Double> FD = OrdenacionDoc.ListaDocs.get(i);
                 System.out.println("Document ID: "+FD.getKey().getName() + "\t\t(weight: "+FD.getValue()+")");
                 System.out.println("Summary: "+new BufferedReader(new FileReader(FD.getKey())).readLine()+"\n");
             }
@@ -49,11 +48,15 @@ public class Formateador {
     				i.execute(); 
     				break;
     		case 2:	Recuperation R = new Recuperation();
-		    		System.out.println("Inserte consulta: ");
-		    		String consulta = scan.nextLine();
-		    		R.read(consulta);
-		    		R.execute();
-		    		showResults();
+    				System.out.println("Leyendo indice invertido...");
+    				R.getIndex();
+		    		do{
+		    			System.out.println("Inserte consulta (Ctrl^Z para salir): ");
+		    			String consulta = scan.nextLine();
+		    			R.read(consulta);
+			    		R.execute();
+			    		showResults();
+		    		}while(consulta != "exit");
     		case 3: break;
 		    default: System.out.println("Error, inserte de nuevo elección.");
     		}

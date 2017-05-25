@@ -10,7 +10,6 @@ import java.util.ArrayList;
 public class Recuperation {
 	
 	private String terminos;
-	private ArrayList<String> Consulta;
 	ArrayList<String> vText;
 	public static ArrayList<String> vTextProcesado = new ArrayList<String>();
 	Filtrado F;
@@ -20,7 +19,6 @@ public class Recuperation {
 	OrdenacionDoc oD = new OrdenacionDoc();
 
 	public void execute() throws IOException{
-		Consulta = new ArrayList<String>();
 		System.out.println("Aplicando filtros a terminos de consulta...");
     	//Filtrado
 		F = new Filtrado(terminos);
@@ -34,12 +32,14 @@ public class Recuperation {
 		P = new Preprocesado(vText);
     	vTextProcesado = P.execute();
 
-    	L.readDocs();
-
 		oD.createList();
 		oD.showList();
 	}
-
+	
+	public void getIndex() throws IOException{
+		L.readDocs();
+	}
+	
 	public void read(String[] args){
 		terminos = "";
 		for(String a : args)

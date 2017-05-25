@@ -2,6 +2,8 @@ package Indexing;
 
 import java.io.*;
 import java.nio.file.*;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.*;
 
 import Filtros.*;
@@ -10,10 +12,12 @@ import SeparacionPalabras.Divisor;
 import TFIDF.*;
 
 public class Indexing {
+	public static int numFiles;
 	
 	public void execute() throws IOException{
 
-		File file = new File(AppPath.DATA);
+		File file = new File(AppPath.Corpus);
+		numFiles = file.list().length;
 		String texto;
 		ArrayList<String> vText;
 		ArrayList<String> vTextProcesado = new ArrayList<String>();
@@ -24,9 +28,12 @@ public class Indexing {
 		HashMap<String, Double> textFrecuencia;
 		HashMap<String,tupla<Double, HashMap<File, Double>>> indiceInvertido = CalculoTFIDF.indiceInvertido;
 		System.out.println("Aplicando filtros a documentos...");
-
+		int i= 0;
+		
 		if(file.isDirectory())
 			for (File f : file.listFiles()) {
+				
+				mostrarIndexing(i);
 				
 				texto = new String(Files.readAllBytes(Paths.get(f.getPath())));
 
@@ -45,9 +52,10 @@ public class Indexing {
 				//Calculo TF
 				textFrecuencia = TF.calcularTF1(vTextProcesado);
 				TF.calcularTF2(textFrecuencia,f);
-				
+				i++;
 			}
-
+		
+			System.out.println();
 			TF.calcularIDF();
 			try{ 
 				PrintWriter indInv = new PrintWriter(AppPath.RES+"indiceInvertido");
@@ -60,6 +68,21 @@ public class Indexing {
 			    indInv.close();
 			} catch(Exception e){}
 			
+	}
+	
+	
+	public void mostrarIndexing(int i){
+		double porcentaje = (i*100.0/numFiles);
+		int cuarto = (int)porcentaje/4;
+		String barra = "<";
+		for(int j = 0; j < cuarto; j++){
+			barra = barra+"=";
+		}
+		for(int j = cuarto; j < 25; j++){
+			barra = barra+" ";
+		}
+		NumberFormat formatter = new DecimalFormat("#0.00");
+		System.out.print("\r"+barra+">\t"+formatter.format(porcentaje)+"% de archivos indexados");
 	}
 	
 }
