@@ -10,6 +10,7 @@ import Filtros.*;
 import Preprocesadores.*;
 import SeparacionPalabras.Divisor;
 import TFIDF.*;
+import main.AppPath;
 
 public class Indexing {
 	public static int numFiles;

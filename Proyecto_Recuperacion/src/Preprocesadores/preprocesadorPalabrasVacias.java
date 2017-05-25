@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.TreeSet;
 
-import Indexing.AppPath;
+import main.AppPath;
 
 public class preprocesadorPalabrasVacias implements preprocesadorGenerico{
 	

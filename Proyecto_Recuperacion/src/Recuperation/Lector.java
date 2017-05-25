@@ -2,8 +2,8 @@ package Recuperation;
 
 import Filtros.CadenaFiltros;
 import Filtros.filtroRegex;
-import Indexing.AppPath;
 import TFIDF.tupla;
+import main.AppPath;
 
 import java.io.File;
 import java.io.IOException;

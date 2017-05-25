@@ -1,4 +1,4 @@
-package Indexing;
+package main;
 
 import java.io.File;
 
