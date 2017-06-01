@@ -13,7 +13,7 @@ import java.util.Map;
  */
 public class OrdenacionDoc {
 
-    public static HashMap<File, Double> Documentos = new HashMap<>();
+    public static HashMap<File, Double> Documentos;
     public static List<Map.Entry<File, Double>> ListaDocs;
 
     public void createList() {
@@ -24,6 +24,7 @@ public class OrdenacionDoc {
                		-**SI: 		se lo sumo al actual
                		-**SI_NO: 	añado el valor nuevo
          */
+    	Documentos = new HashMap<>();
         double valorAColocar;
         for(String P : Recuperation.vTextProcesado) {
             if(Lector.indiceInvertido.containsKey(P)){

@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Recuperation {
-	
+
 	private String terminos;
 	ArrayList<String> vText;
 	public static ArrayList<String> vTextProcesado = new ArrayList<String>();
@@ -18,34 +18,30 @@ public class Recuperation {
 	Lector L = new Lector();
 	OrdenacionDoc oD = new OrdenacionDoc();
 
-	public void execute() throws IOException{
+	public void execute() throws IOException {
 		System.out.println("Aplicando filtros a terminos de consulta...");
-    	//Filtrado
+		// Filtrado
+
 		F = new Filtrado(terminos);
 		terminos = F.execute();
 
-		//Division en Lista
-		D =  new Divisor();
+		// Division en Lista
+		D = new Divisor();
 		vText = D.execute(terminos);
 
-		//Preprocesado
+		// Preprocesado
 		P = new Preprocesado(vText);
-    	vTextProcesado = P.execute();
+		vTextProcesado = P.execute();
 
 		oD.createList();
 		oD.showList();
 	}
-	
-	public void getIndex() throws IOException{
+
+	public void getIndex() throws IOException {
 		L.readDocs();
 	}
-	
-	public void read(String[] args){
-		terminos = "";
-		for(String a : args)
-			terminos = terminos+a+" ";
-	}
-	public void read(String s){
-		terminos = s;
+
+	public void read(String s) {
+		terminos = new String(s);
 	}
 }
