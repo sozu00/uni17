@@ -1,27 +1,21 @@
 package Proyector;
 
+import Indexing.Indexing;
+import Recuperation.OrdenacionDoc;
+import Recuperation.Recuperation;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Scanner;
 
-import Indexing.Indexing;
-import Preprocesadores.preprocesadorLongitud;
-import Recuperation.OrdenacionDoc;
-import Recuperation.Recuperation;
-
-/**
- * Created by sozu on 21/05/2017.
- */
 public class Formateador {
-	Scanner scan;
-	int choice;
-	String consulta;
 
 	@SuppressWarnings("resource")
-	public void showResults() {
+	private void showResults() {
 		try {
 			int Limit = 10;
 
@@ -39,29 +33,29 @@ public class Formateador {
 
 	public void showMenu() throws IOException {
 
-		scan = new Scanner(System.in);
+		Scanner scan = new Scanner(System.in);
 
+		int choice;
 		do {
 			System.out.println("Seleccione qué desea hacer:\n1)Indexación\n2)Recuperación\n3)Salir");
 			choice = Integer.valueOf(scan.nextLine());
-
 			switch (choice) {
 			case 1:
 				Indexing i = new Indexing();
-				preprocesadorLongitud.setLength(0);
 				i.execute();
 				break;
 			case 2:
 				Recuperation R = new Recuperation();
 				System.out.println("Leyendo indice invertido...");
 				R.getIndex();
+				String consulta;
 				do {
 					System.out.println("Inserte consulta (Ctrl^Z para salir): ");
-					String consulta = scan.nextLine();
+					consulta = scan.nextLine();
 					R.read(consulta);
 					R.execute();
 					showResults();
-				} while (consulta != "exit");
+				} while (!Objects.equals(consulta, "exit"));
 			case 3:
 				break;
 			default:

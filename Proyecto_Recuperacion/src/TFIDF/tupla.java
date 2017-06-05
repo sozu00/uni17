@@ -1,7 +1,8 @@
 package TFIDF;
 
 public class tupla<S, T> {
-    public S idf;
+    private S idf;
+    @SuppressWarnings("CanBeFinal")
     public T docPeso;
     
     public void setIDF(S idf){this.idf = idf;}

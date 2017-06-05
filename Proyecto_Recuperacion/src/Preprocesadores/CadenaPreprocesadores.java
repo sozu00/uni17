@@ -2,8 +2,8 @@ package Preprocesadores;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class CadenaPreprocesadores {
-	private ArrayList<preprocesadorGenerico> preprocesadores = new ArrayList<preprocesadorGenerico>();
+class CadenaPreprocesadores {
+	private final ArrayList<preprocesadorGenerico> preprocesadores = new ArrayList<>();
 	
 	public void add(preprocesadorGenerico p){
 		preprocesadores.add(p);

@@ -1,16 +1,14 @@
 package Filtros;
 
-import java.io.IOException;
-
 public class Filtrado {
-	String texto;
+	private final String texto;
 	
 	public Filtrado(String s){
 		texto = s;
 	}
 	
 	
-	public String execute() throws IOException{
+	public String execute() {
 		CadenaFiltros CdF = new CadenaFiltros();
 		CdF.add(new filtroMayusculas());
 		CdF.add(new filtroRegex("'", ""));

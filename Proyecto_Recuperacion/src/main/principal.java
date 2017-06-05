@@ -1,11 +1,14 @@
 package main;
-import java.io.IOException;
 
+import Preprocesadores.preprocesadorLongitud;
 import Proyector.Formateador;
 
-public class principal {
+import java.io.IOException;
+
+class principal {
 	
 	public static void main(final String[] args) throws IOException{
+		preprocesadorLongitud.setLength(2);
 		Formateador F = new Formateador();
 		F.showMenu();
 	}

@@ -1,19 +1,12 @@
 package Recuperation;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-/**
- * Created by sozu on 21/05/2017.
- */
+@SuppressWarnings("DefaultFileTemplate")
 public class OrdenacionDoc {
 
-    public static HashMap<File, Double> Documentos;
+    private static HashMap<File, Double> Documentos;
     public static List<Map.Entry<File, Double>> ListaDocs;
 
     public void createList() {
@@ -44,17 +37,14 @@ public class OrdenacionDoc {
 
     public void showList() {
     	//Creo un comparador para que los ordene de forma DESCENDENTE
-        Comparator<Map.Entry<File, Double>> CompDocs = new Comparator<Map.Entry<File, Double>>() {
-            @Override
-            public int compare(Map.Entry<File, Double> e1, Map.Entry<File, Double> e2) {
-                Double v1 = e1.getValue();
-                Double v2 = e2.getValue();
-                return v2.compareTo(v1);
-            }
+        Comparator<Map.Entry<File, Double>> CompDocs = (e1, e2) -> {
+            Double v1 = e1.getValue();
+            Double v2 = e2.getValue();
+            return v2.compareTo(v1);
         };
         
         ListaDocs = new ArrayList<>(Documentos.entrySet());
         
-        Collections.sort(ListaDocs, CompDocs);
+        ListaDocs.sort(CompDocs);
     }
 }

@@ -1,12 +1,6 @@
 package Filtros;
-/*
- * String ejecutar(String s)
- * 
- *  
- */
 
+interface filtroGenerico {
 
-public interface filtroGenerico {
-
-	public String ejecutar(String s);
+	String ejecutar(String s);
 }

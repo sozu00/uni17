@@ -10,28 +10,24 @@ import java.util.ArrayList;
 public class Recuperation {
 
 	private String terminos;
-	ArrayList<String> vText;
-	public static ArrayList<String> vTextProcesado = new ArrayList<String>();
-	Filtrado F;
-	Preprocesado P;
-	Divisor D;
-	Lector L = new Lector();
-	OrdenacionDoc oD = new OrdenacionDoc();
+	public static ArrayList<String> vTextProcesado = new ArrayList<>();
+	private final Lector L = new Lector();
+	private final OrdenacionDoc oD = new OrdenacionDoc();
 
 	public void execute() throws IOException {
 		System.out.println("Aplicando filtros a terminos de consulta...");
 		// Filtrado
 
-		F = new Filtrado(terminos);
-		terminos = F.execute();
+		Filtrado f = new Filtrado(terminos);
+		terminos = f.execute();
 
 		// Division en Lista
-		D = new Divisor();
-		vText = D.execute(terminos);
+		Divisor d = new Divisor();
+		ArrayList<String> vText = d.execute(terminos);
 
 		// Preprocesado
-		P = new Preprocesado(vText);
-		vTextProcesado = P.execute();
+		Preprocesado p = new Preprocesado(vText);
+		vTextProcesado = p.execute();
 
 		oD.createList();
 		oD.showList();
@@ -42,6 +38,6 @@ public class Recuperation {
 	}
 
 	public void read(String s) {
-		terminos = new String(s);
+		terminos = s;
 	}
 }

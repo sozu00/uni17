@@ -6,6 +6,6 @@ import java.util.Arrays;
 public class Divisor {
 	
 	public ArrayList<String> execute(String s){
-		return new ArrayList<String>(Arrays.asList(s.split(" ")));
+		return new ArrayList<>(Arrays.asList(s.split(" ")));
 	}
 }

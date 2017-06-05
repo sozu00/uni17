@@ -3,8 +3,9 @@ package main;
 import java.io.File;
 
 public class AppPath {
+	@SuppressWarnings("unused")
 	public static String DATA = "data";
-	public static String Empty = "emptywords"+File.separator+"emptywords";
-	public static String RES = "results"+File.separator;
-	public static String Corpus = "corpus";
+	public static final String Empty = "emptywords"+File.separator+"emptywords";
+	public static final String RES = "results"+File.separator;
+	public static final String Corpus = "corpus";
 }

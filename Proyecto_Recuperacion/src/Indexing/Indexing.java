@@ -1,27 +1,31 @@
 package Indexing;
 
-import java.io.*;
-import java.nio.file.*;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.util.*;
-
-import Filtros.*;
-import Preprocesadores.*;
+import Filtros.Filtrado;
+import Preprocesadores.Preprocesado;
 import SeparacionPalabras.Divisor;
-import TFIDF.*;
+import TFIDF.CalculoTFIDF;
+import TFIDF.tupla;
 import main.AppPath;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Indexing {
-	public static int numFiles;
+	public static double numFiles;
 	
 	public void execute() throws IOException{
 
 		File file = new File(AppPath.Corpus);
-		numFiles = file.list().length;
 		String texto;
 		ArrayList<String> vText;
-		ArrayList<String> vTextProcesado = new ArrayList<String>();
+		ArrayList<String> vTextProcesado;
 		Filtrado F;
 		Preprocesado P;
 		Divisor D;
@@ -32,55 +36,57 @@ public class Indexing {
 		int i= 0;
 		
 		if(file.isDirectory())
+			numFiles = file.list().length;
 			for (File f : file.listFiles()) {
-				
+
 				mostrarIndexing(i);
-				
+
 				texto = new String(Files.readAllBytes(Paths.get(f.getPath())));
 
-		    	//Filtrado
+				//Filtrado
 				F = new Filtrado(texto);
 				texto = F.execute();
 
 				//Division en Lista
-				D =  new Divisor();
+				D = new Divisor();
 				vText = D.execute(texto);
 
 				//Preprocesado
 				P = new Preprocesado(vText);
-		    	vTextProcesado = P.execute();
-				
+				vTextProcesado = P.execute();
+
 				//Calculo TF
 				textFrecuencia = TF.calcularTF1(vTextProcesado);
-				TF.calcularTF2(textFrecuencia,f);
+				TF.calcularTF2(textFrecuencia, f);
 				i++;
 			}
-		
+
 			System.out.println();
-			TF.calcularIDF();
-			try{ 
-				PrintWriter indInv = new PrintWriter(AppPath.RES+"indiceInvertido");
-				PrintWriter longD = new PrintWriter(AppPath.RES+"longDocumentos");
-				
-				longD.write(TF.calcularLongitud().toString());
-			    indInv.write(indiceInvertido.toString());
-			    
-			    longD.close();
-			    indInv.close();
-			} catch(Exception e){}
-			
+			TF.calcularIDFyLongitud();
+			try {
+				PrintWriter indInv = new PrintWriter(AppPath.RES + "indiceInvertido");
+				PrintWriter longD = new PrintWriter(AppPath.RES + "longDocumentos");
+
+				longD.write(CalculoTFIDF.Longitudes.toString());
+				indInv.write(indiceInvertido.toString());
+
+				longD.close();
+				indInv.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 	}
 	
 	
-	public void mostrarIndexing(int i){
+	private void mostrarIndexing(int i){
 		double porcentaje = (i*100.0/numFiles);
 		int cuarto = (int)porcentaje/4;
-		String barra = "<";
+		StringBuilder barra = new StringBuilder("<");
 		for(int j = 0; j < cuarto; j++){
-			barra = barra+"=";
+			barra.append("=");
 		}
 		for(int j = cuarto; j < 25; j++){
-			barra = barra+" ";
+			barra.append(" ");
 		}
 		NumberFormat formatter = new DecimalFormat("#0.00");
 		System.out.print("\r"+barra+">\t"+formatter.format(porcentaje)+"% de archivos indexados");

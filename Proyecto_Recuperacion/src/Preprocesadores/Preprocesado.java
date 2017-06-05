@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Preprocesado {
-	ArrayList<String> vText;
+	private final ArrayList<String> vText;
 	
 	public Preprocesado(ArrayList<String> s){
 		vText = s;
