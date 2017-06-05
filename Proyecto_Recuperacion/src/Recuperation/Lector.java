@@ -50,7 +50,7 @@ class Lector {
         indInv = CdF.ejecutar(indInv);
         
         /*Separo Palabra+IDF de las tuplas
-         * porque estan situadas talque
+         * porque estan situadas tal que
          * word=IDF@@FilePathWord=TF,FilePath2Word=TF2...
          */
         ArrayList<String> indiceT = new ArrayList<>(Arrays.asList(indInv.split("@@")));
@@ -58,21 +58,28 @@ class Lector {
         
         /*Pequeño FIX porque los TF de cada palabra están colocados en la fila inferior
          * tal que 
-         * word=IDF
-         * FilePathWord=TF, FilePath2Word=TF2, word2=IDF2
-         * FilePathWord2=TF, FilePath2Word2=TF2, word3=IDF3		
+         *      word=IDF
+         *      FilePathWord=TF, FilePath2Word=TF2, word2=IDF2
+         *      FilePathWord2=TF, FilePath2Word2=TF2, word3=IDF3
+         *      ...
+         *
+         * Asi que lo realizare de manera que quede:
+         *      word=IDF, FilePathWord=TF, FilePath2Word=TF2,
+         *      word2=IDF2, FilePathWord2=TF, FilePath2Word2=TF2,
+         *      word3=IDF3...
          */
         int i = indiceT.size()-1;
-        ArrayList<String> Superior = new ArrayList<>(Arrays.asList(indiceT.get(i - 1).split(",")));
-        ArrayList<String> Actual = new ArrayList<>(Arrays.asList(indiceT.get(i).split(",")));
-        indiceT.set(i, Superior.get(Superior.size()-1)+Actual.toString());
+        ArrayList<String> Linea_Superior = new ArrayList<>(Arrays.asList(indiceT.get(i - 1).split(",")));
+        ArrayList<String> Linea_Actual = new ArrayList<>(Arrays.asList(indiceT.get(i).split(",")));
+        indiceT.set(i, Linea_Superior.get(Linea_Superior.size()-1)+Linea_Actual.toString());
 
         for(i = indiceT.size()-2; i>0 ;i--){
-            Superior = new ArrayList<>(Arrays.asList(indiceT.get(i - 1).split(",")));
-            Actual = new ArrayList<>(Arrays.asList(indiceT.get(i).split(",")));
-            Actual.remove(Actual.size()-1);
-            indiceT.set(i, Superior.get(Superior.size()-1)+Actual.toString());
+            Linea_Superior = new ArrayList<>(Arrays.asList(indiceT.get(i - 1).split(",")));
+            Linea_Actual = new ArrayList<>(Arrays.asList(indiceT.get(i).split(",")));
+            Linea_Actual.remove(Linea_Actual.size()-1);
+            indiceT.set(i, Linea_Superior.get(Linea_Superior.size()-1)+Linea_Actual.toString());
         }
+
         indiceT.remove(0);
        
         
