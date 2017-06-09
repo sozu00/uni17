@@ -9,7 +9,7 @@ using namespace std;
 
 struct Ciudad{
   double x, y;
-}
+};
 
 double distancia(Ciudad c1, Ciudad c2){
   return sqrt(pow(c1->x - c2->x,2)+pow(c1->y - c2->y,2));
@@ -18,7 +18,7 @@ double distancia(Ciudad c1, Ciudad c2){
 void rellenarGrafo(Lista<GrafoP>& Islas, size_t indexIslas, Lista<Grafo::vertice> ciudadesOrdenadas, size_t inicio, size_t fin, Grafo& G, vector<Ciudad> ciudades){
   for(size_t i = inicio; i < fin; i++)
     for (size_t j = inicio; j < fin; j++) //El vertice[ciudadI, CiudadJ] del grafo[index]
-      Islas[indexIslas][ciudadesOrdenadas[i]][ciudadesOrdenadas[[j] =
+      Islas[indexIslas][ciudadesOrdenadas[i]][ciudadesOrdenadas[[j]] =
         (G[ciudadesOrdenadas[i]][ciudadesOrdenadas[j]]) ? distancia(cuidades[i],ciudades[j]) : INT_MAX;
 }
 
@@ -102,28 +102,52 @@ carretera, y acordamos que el coste inicial seria el doble), realizo Dijkstra y 
 
 
 template <typename tCoste>
-tCoste Grecoland(int NF, int ND, vector<Ciudad> Ciudades, vector<bool> Costeras, int Origen. int Destino){
-  GrafoP<tCoste> Greco(NF+ND);
-  for (size_t i = 0; i < NF; i++) {
-    for (size_t j = 0; j < NF; j++) Greco[i][j] = distancia(Ciudades[i][j]);
-    for (size_t j = NF; j < ND+NF; j++){
-      if(Costeras[i] && Costeras[j]) Greco[i][j] = distancia(Ciudades[i][j])*2;
-      else Greco[i][j] = GrafoP::INFINITO;
-      Greco[j][i] = Greco[i][j]; //Las zonas costeras se llenan de forma simétrica así
+GrafoP<tCoste> construirCiudad(int NF, int ND, vector<Ciudad> Ciudades, vector<bool> Costeras){
+    GrafoP<tCoste> G(NF+ND);
+    //Relleno
+    for (int i = 0; i < NF+ND; ++i) {
+        for (int j = 0; j < NF+ND; ++j) {
+            if (i < NF && j < NF)
+                //Fobos - Fobos
+                G[i][j] = distancia(Ciudades[i], Ciudades[j]);
+            if (i < NF && j >= NF)
+                //Fobos - Deimos (Costes de puente dobles)
+                if (Costeras[i] && Costeras[j]) G[i][j] = distancia(Ciudades[i], Ciudades[j])*2;
+            if (i >= NF && j < NF)
+                //Deimos - Fobos (Costes de puente dobles)
+                if (Costeras[i] && Costeras[j]) G[i][j] = distancia(Ciudades[i], Ciudades[j])*2;
+            if (i >= NF && j >= NF)
+                //Deimos - Deimos
+                G[i][j] = distancia(Ciudades[i], Ciudades[j]);
+        }
     }
-  }
-  for (size_t i = NF; i < NF+ND; i++)
-    for (size_t j = NF; j < ND+NF; j++)
-      Greco[i][j] = distancia(Ciudades[i][j]);
+}
 
-  Greco = Prim(Greco);
 
-  //Cambio los costes de los puentes a la mitad (En viaje cambian).
-  for (size_t i = NF; i < NF+ND; i++) {
-    for (size_t j = 0; j < NF; j++) {
-      Greco[i][j] = Greco[i][j]/2;
-      Greco[j][i] = Greco[i][j];
+template <typename tCoste>
+tCoste Grecoland(int NF, int ND, vector<Ciudad> Fobos, vector<Ciudad> Deimos, vector<bool> CosterasFobos, vector<bool> CosterasDeimos, int Origen, int Destino){
+
+    //Creo vector con todas las ciudades y otro con todas las costeras
+    vector<Ciudad> Ciudades(NF+ND);
+    Ciudades.insert(Ciudades.end(), Fobos.begin(), Fobos.end());
+    Ciudades.insert(Ciudades.end(), Deimos.begin(), Deimos.end());
+
+    vector<bool> Costeras(NF+ND);
+    Costeras.insert(Costeras.end(), CosterasFobos.begin(), CosterasFobos.end());
+    Costeras.insert(Costeras.end(), CosterasDeimos.begin(), CosterasDeimos.end());
+
+    GrafoP<tCoste> Greco(NF+ND) = construirCiudad(NF, ND, Ciudades, Costeras);
+
+    Greco = Prim(Greco);//Elimino los innecesarios con Prim
+
+    //Cambio los costes de los puentes a la mitad (En viaje cambian)
+
+    for(int i = NF; i < NF+ND; i++) {
+        for(int j = 0; j < NF; j++) {
+            Greco[i][j] = Greco[i][j]/2;
+            Greco[j][i] = Greco[i][j];
+        }
     }
-  }
-  return Dijkstra(Greco, Origen, new vector<typename GrafoP<tCoste>::vertice>)[Destino];
+    //Realizo Dijkstra para recalcular los costes de los viajes y que me encuentre el mas corto
+    return Dijkstra(Greco, Origen, vector<typename GrafoP<tCoste>::vertice>)[Destino];
 }
